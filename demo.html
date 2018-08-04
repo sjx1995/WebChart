@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>多层表头</title>
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
+    <style type="text/css">
+
+        .table td, .table th {
+            font-style: normal;
+            font-weight: normal;
+            text-align:center;
+        }
+
+        .bootstrap-table {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<table data-toggle="table" class="table-bordered">
+    <thead>
+    <tr>
+        <th data-rowspan="2">总价值</th>
+        <th data-colspan="1">妻子</th>
+        <th data-colspan="2">车子</th>
+        <th data-colspan="3">房子</th>
+
+    </tr>
+    <tr>
+        <th>唯一</th>
+        <th>Mini</th>
+        <th>Smart</th>
+        <th>90平</th>
+        <th>149平</th>
+        <th>别墅</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td data-rowspan="2">∞</td>
+        <td>30万</td>
+        <td>20万</td>
+        <td>60万</td>
+        <td>100万</td>
+        <td>看着办</td>
+        <td>∞∞</td>
+    </tr>
+    <tr>
+        <!--<td>∞</td>-->
+        <td>30万</td>
+        <td>20万</td>
+        <td>60万</td>
+        <td>100万</td>
+        <td>看着办</td>
+        <td>∞∞</td>
+    </tr>
+    <tr>
+        <td>∞</td>
+        <td>30万</td>
+        <td>20万</td>
+        <td>60万</td>
+        <td>100万</td>
+        <td>看着办</td>
+        <td>∞∞</td>
+    </tr>
+    <tr>
+        <td>∞</td>
+        <td>30万</td>
+        <td>20万</td>
+        <td>60万</td>
+        <td>100万</td>
+        <td>看着办</td>
+        <td>∞∞</td>
+    </tr>
+    </tbody>
+</table>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+</body>
+</html>

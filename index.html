@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>净化控股</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <style type="text/css">
+        body{
+
+        }
+        .navbar {
+            opacity: 1;
+        }
+        /*表格文字居中*/
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle!important;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#meun1" aria-expanded="false">
+                <span class="sr-only">Navbar</span>
+                <!--小屏幕菜单合并图标-->
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" class="navbar-brand" href="http://jinghuachina.net">净化控股</a>
+        </div>
+        <div class="collapse navbar-collapse" id="meun1">
+            <ul class="nav navbar-nav">
+                <li><a href="#tabLine" data-toggle="tab">折线图</a> </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">柱状图</a>
+                    <ul class="dropdown-menu" id="dropdownTable">
+                        <li><a href="#tabBar1" data-toggle="tab">柱状图1</a> </li>
+                        <li><a href="#tabBar2" data-toggle="tab">柱状图2</a> </li>
+                    </ul>
+                </li>
+                <li><a href="#tabPie" data-toggle="tab">饼状图</a> </li>
+                <li><a href="#tabChart" data-toggle="tab">表格</a> </li>
+            </ul>
+        </div>
+        <!--<div class="collapse navbar-collapse" id="meun1">-->
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li class="dropdown active">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">图表类型<span class="caret"></span></a>-->
+                    <!--<ul class="dropdown-menu" id="dropdownTable">-->
+                        <!--<li><a href="#TableLine" data-toggle="tab">折线图</a></li>-->
+                        <!--&lt;!&ndash;-->
+                        <!--<li role="separator" class="divider"></li>-->
+                        <!--&ndash;&gt;-->
+                        <!--<li><a href="#Tablebar1" data-toggle="tab">柱状图</a></li>-->
+                        <!--<li><a href="#TablePie" data-toggle="tab">饼状图</a></li>-->
+                        <!--<li><a href="#TableChart" data-toggle="tab">表格</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+                <!--<li><a href="#">LinkAdd1</a> </li>-->
+                <!--<li><a href="#">LinkAdd2</a> </li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    </div>
+</nav>
+<div class="tab-content" id="myTableContent">
+    <div class="tab-pane fade" active id="tabLine">
+        <div style="margin: 0 10% 0 10%;height: 400px;width: 80%;">
+            <h3 class="text-center">图表系统：折线图</h3>
+            <!--折线图容器-->
+            <div id="tableContainerLine"></div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="tabBar1">
+        <div style="margin: 0 10% 0 10%;width: 80%;height: 400px;">
+            <h3 class="text-center">图标系统：柱状图</h3>
+            <div id="tableContainerBar1"></div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="tabBar2">
+        <div style="margin: 0 10% 0 10%;width: 80%;height: 400px;">
+            <h3 class="text-center">图标系统：柱状图</h3>
+            <div id="tableContainerBar2"></div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="tabPie">
+        <h3 class="text-center">图标系统：饼状图</h3>
+        <div id="tableContainerPie" style="margin: 0 20% 0 20%;"></div>
+    </div>
+    <div class="tab-pane fade" id="tabChart">
+        <h3 class="text-center">图标系统：表格</h3>
+        <div id="tableContainerChart" style="width: 800px;" class="center-block">
+            <table class="table table-bordered table-hover" data-toggle="table">
+                <thead>
+                    <tr>
+                        <th data-rowspan="2">公司</th>
+                        <th data-rowspan="2">净水池编号</th>
+                        <th data-colspan="2">2016年</th>
+                        <th data-colspan="2">2017年</th>
+                    </tr>
+                    <tr>
+                        <th>净水量</th>
+                        <th>污水量</th>
+                        <th>净水量</th>
+                        <th>污水量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-rowspan="3">一公司</td>
+                        <td>净水池#1</td>
+                        <td>106.2</td>
+                        <td>7.6</td>
+                        <td>125.3</td>
+                        <td>8.2</td>
+                    </tr>
+                    <tr>
+                        <td>二公司</td>
+                        <td>净水池#2</td>
+                        <td>123.2</td>
+                        <td>10.6</td>
+                        <td>106.3</td>
+                        <td>9.6</td>
+                    </tr>
+                    <tr>
+                        <td>三公司</td>
+                        <td>净水池#3</td>
+                        <td>85.2</td>
+                        <td>4.9</td>
+                        <td>86.3</td>
+                        <td>4.2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--加载BootsrapTable-->
+<script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+
+<!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+<!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!--引入highcharts-->
+<script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+<script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+<script src="..\Highcharts\code\highcharts-more.js"></script>
+<script src="https://img.hcharts.cn/highcharts/modules/sunburst.js"></script>
+<!--折线图-->
+<script>
+    Highcharts.setOptions({
+        global: {
+            useUTC: false
+        }
+    });
+    function activeLastPointToolip(chart) {
+        var points = chart.series[0].points;
+        chart.tooltip.refresh(points[points.length -1]);
+    }
+    var chart = Highcharts.chart('tableContainerLine', {
+        chart: {
+            type: 'spline',
+            marginRight: 10,
+            events: {
+                load: function () {
+                    var series = this.series[0],
+                        chart = this;
+                    activeLastPointToolip(chart);
+                    setInterval(function () {
+                        var x = (new Date()).getTime(), // 当前时间
+                            y = Math.random();          // 随机值
+                        series.addPoint([x, y], true, true);
+                        activeLastPointToolip(chart);
+                    }, 1000);
+                }
+            }
+        },
+        title: {
+            text: '折线数据（间隔1秒）'
+        },
+        xAxis: {
+            type: 'datetime',
+            tickPixelInterval: 150
+        },
+        yAxis: {
+            title: {
+                text: null
+            }
+        },
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.name + '</b><br/>' +
+                    Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                    Highcharts.numberFormat(this.y, 2);
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        series: [{
+            name: '随机数据',
+            data: (function () {
+                // 生成随机值
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.random()
+                    });
+                }
+                return data;
+            }())
+        }]
+    });
+</script>
+<!--柱状图1-->
+<script type="text/javascript">
+    var chart = Highcharts.chart('tableContainerBar1',{
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: '月平均数据'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: [
+                '一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '净水量 (吨)'
+            }
+        },
+        tooltip: {
+// head + 每个 point + footer 拼接成完整的 table
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: '净水池#1',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+        }, {
+            name: '净水池#2',
+            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+        }, {
+            name: '净水池#3',
+            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+        }, {
+            name: '净水池#4',
+            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+        }]
+    });
+</script>
+<!--柱状图2-->
+<script type="text/javascript">
+    var chart = Highcharts.chart('tableContainerBar2', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: '净水池净水比例'
+        },
+        xAxis: {
+            categories: ['第一季度', '第二季度', '第三季度', '第四季度']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '净水量/(吨)'
+            },
+            stackLabels: {  // 堆叠数据标签
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+        legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 25,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.x + '</b><br/>' +
+                    this.series.name + ': ' + this.y + '<br/>' +
+                    '总量: ' + this.point.stackTotal;
+            }
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                    style: {
+                        // 如果不需要数据标签阴影，可以将 textOutline 设置为 'none'
+                        textOutline: '1px 1px black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: '净水池#1',
+            data: [9.7, 3.3, 4.5, 7]
+        }, {
+            name: '净水池#2',
+            data: [4.8, 8.2, 5.2, 10.7]
+        }, {
+            name: '净水池#3',
+            data: [3.2, 7.9, 4.2, 10.6]
+        }]
+    });
+</script>
+<!--饼状图-->
+<script type="text/javascript">
+    Highcharts.setOptions({
+        lang: {
+            thousandsSep: ','
+        }
+    });
+    var data = [{
+        'id': '0.0',
+        'parent': '',
+        'name': '2017年'
+    }, {
+        'id': '1.1',
+        'parent': '0.0',
+        'name': '第一季度'
+    }, {
+        'id': '1.2',
+        'parent': '0.0',
+        'name': '第二季度'
+    }, {
+        'id': '1.3',
+        'parent': '0.0',
+        'name': '第三季度'
+    }, {
+        'id': '1.4',
+        'parent': '0.0',
+        'name': '第四季度'
+    },
+        /* 一公司&第一季度*/
+        {
+            'id': '2.1',
+            'parent': '1.1',
+            'name': '一公司'
+        },
+
+        {
+            'id': '3.1',
+            'parent': '2.1',
+            'name': '净水池#1',
+            'value': 10.6
+        }, {
+            'id': '3.2',
+            'parent': '2.1',
+            'name': '净水池#2',
+            'value': 14.2
+        }, {
+            'id': '3.3',
+            'parent': '2.1',
+            'name': '净水池#3',
+            'value': 9.6
+        },
+        /*二公司&第一季度*/
+        {
+            'id': '2.2',
+            'parent': '1.1',
+            'name': '二公司',
+        }, {
+            'id': '3.4',
+            'parent': '2.2',
+            'name': '净水池#1',
+            'value': 23.5
+        }, {
+            'id': '3.5',
+            'parent': '2.2',
+            'name': '净水池#2',
+            'value': 25.3
+        },
+        /*三公司&第一季度*/
+        {
+            'id': '2.3',
+            'parent': '1.1',
+            'name': '三公司',
+        },
+        {
+            'id': '3.6',
+            'parent': '2.3',
+            'name': '净水池#1',
+            'value': 17.5
+        },
+        {
+            'id': '3.7',
+            'parent': '2.3',
+            'name': '净水池#2',
+            'value': 19.6
+        },
+        {
+            'id': '3.8',
+            'parent': '2.3',
+            'name': '净水池#3',
+            'value': 5.2
+        },
+        /*一公司&第二季度*/
+        {
+            'id': '2.4',
+            'parent': '1.2',
+            'name': '一公司',
+        },
+        {
+            'id': '3.9',
+            'parent': '2.4',
+            'name': '净水池#1',
+            'value': 5.3
+        },
+        {
+            'id': '3.10',
+            'parent': '2.4',
+            'name': '净水池#2',
+            'value': 25.1
+        },
+        {
+            'id': '3.11',
+            'parent': '2.4',
+            'name': '净水池',
+            'value': 6.2
+        },
+        /*二公司&第二季度*/
+        {
+            'id': '2.5',
+            'parent': '1.2',
+            'name': '二公司',
+        },
+        {
+            'id': '3.12',
+            'parent': '2.5',
+            'name': '净水池#1',
+            'value': 8.2
+        },
+        {
+            'id': '3.13',
+            'parent': '2.5',
+            'name': '净水池#2',
+            'value': 12.3
+        },
+        {
+            'id': '3.14',
+            'parent': '2.5',
+            'name': '净水池#3',
+            'value': 16.3
+        },
+        /*三公司&第二季度*/
+        {
+            'id': '2.6',
+            'parent': '1.2',
+            'name': '三公司',
+        },
+        {
+            'id': '3.15',
+            'parent': '2.6',
+            'name': '净水池#1',
+            'value': 8.2
+        },
+        {
+            'id': '3.16',
+            'parent': '2.6',
+            'name': '净水池#2',
+            'value': 14.6
+        },
+        /*一公司&第三季度*/
+        {
+            'id': '2.7',
+            'parent': '1.3',
+            'name': '一公司',
+        },
+        {
+            'id': '3.17',
+            'parent': '2.7',
+            'name': '净水池#1',
+            'value': 5.6
+        },
+        {
+            'id': '3.18',
+            'parent': '2.7',
+            'name': '净水池#2',
+            'value': 17.2
+        },
+        {
+            'id': '3.19',
+            'parent': '2.7',
+            'name': '净水池#3',
+            'value': 9.6
+        },
+        /*二公司&第三季度*/
+        {
+            'id': '2.8',
+            'parent': '1.3',
+            'name': '二公司',
+        },
+        {
+            'id': '3.20',
+            'parent': '2.8',
+            'name': '净水池#1',
+            'value': 6.3
+        },
+        {
+            'id': '3.21',
+            'parent': '2.8',
+            'name': '净水池#2',
+            'value': 4.2
+        },
+        {
+            'id': '3.22',
+            'parent': '2.8',
+            'name': '净水池#3',
+            'value': 4.1
+        },
+        /*一公司&第四季度*/
+        {
+            'id': '2.9',
+            'parent': '1.4',
+            'name': '一公司',
+        },
+        {
+            'id': '3.23',
+            'parent': '2.9',
+            'name': '净水池#1',
+            'value': 15.6
+        },
+        {
+            'id': '3.24',
+            'parent': '2.9',
+            'name': '净水池#2',
+            'value': 5.2
+        },
+        {
+            'id': '3.25',
+            'parent': '2.9',
+            'name': '净水池#3',
+            'value': 16.3
+        },
+        /*二公司&第四季度*/
+        {
+            'id': '2.10',
+            'parent': '1.4',
+            'name': '二公司',
+        },
+        {
+            'id': '3.26',
+            'parent': '2.10',
+            'name': '净水池#1',
+            'value': 16.2
+        },
+        {
+            'id': '3.27',
+            'parent': '2.10',
+            'name': '净水池#2',
+            'value': 21.5
+        },
+        {
+            'id': '3.28',
+            'parent': '2.10',
+            'name': '净水池#3',
+            'value': 20.9
+        },
+        /*三公司&第四季度*/
+        {
+            'id': '2.11',
+            'parent': '1.4',
+            'name': '三公司',
+        },
+        {
+            'id': '3.29',
+            'parent': '2.11',
+            'name': '净水池#1',
+            'value': 6.1
+        },
+        {
+            'id': '3.30',
+            'parent': '2.11',
+            'name': '净水池#2',
+            'value': 16.3
+        }];
+
+    // Splice in transparent for the center circle
+    Highcharts.getOptions().colors.splice(0, 0, 'transparent');
+
+
+    Highcharts.chart('tableContainerPie', {
+
+        chart: {
+            height: '100%'
+        },
+
+        title: {
+            text: '净水比例图'
+        },
+        subtitle: {
+            text: ''
+        },
+        series: [{
+            type: "sunburst",
+            data: data,
+            allowDrillToNode: true,
+            cursor: 'pointer',
+            dataLabels: {
+                /**
+                 * A custom formatter that returns the name only if the inner arc
+                 * is longer than a certain pixel size, so the shape has place for
+                 * the label.
+                 */
+                formatter: function () {
+                    var shape = this.point.node.shapeArgs;
+
+                    var innerArcFraction = (shape.end - shape.start) / (2 * Math.PI);
+                    var perimeter = 2 * Math.PI * shape.innerR;
+
+                    var innerArcPixels = innerArcFraction * perimeter;
+
+                    if (innerArcPixels > 16) {
+                        return this.point.name;
+                    }
+                }
+            },
+            levels: [{
+                level: 2,
+                colorByPoint: true,
+                dataLabels: {
+                    rotationMode: 'parallel'
+                }
+            },
+                {
+                    level: 3,
+                    colorVariation: {
+                        key: 'brightness',
+                        to: -0.5
+                    }
+                }, {
+                    level: 4,
+                    colorVariation: {
+                        key: 'brightness',
+                        to: 0.5
+                    }
+                }]
+
+        }],
+        tooltip: {
+            headerFormat: "",
+            pointFormat: '<b>{point.name}</b>的净水量是：<b>{point.value}</b>'
+        }
+    });
+</script>
+</body>
+</html>
