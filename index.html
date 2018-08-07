@@ -72,74 +72,126 @@
     </div>
 </nav>
 <div class="tab-content" id="myTableContent">
-    <div class="tab-pane fade" active id="tabLine">
-        <div style="margin: 0 10% 0 10%;height: 400px;width: 80%;">
+    <div class="tab-pane fade active in" active id="tabLine">
+        <div style="margin: 80px 10% 0 10%;height: 400px;width: 80%;">
             <h3 class="text-center">图表系统：折线图</h3>
             <!--折线图容器-->
             <div id="tableContainerLine"></div>
         </div>
     </div>
     <div class="tab-pane fade" id="tabBar1">
-        <div style="margin: 0 10% 0 10%;width: 80%;height: 400px;">
+        <div style="margin: 80px 10% 0 10%;width: 80%;height: 400px;">
             <h3 class="text-center">图标系统：柱状图</h3>
             <div id="tableContainerBar1"></div>
         </div>
     </div>
     <div class="tab-pane fade" id="tabBar2">
-        <div style="margin: 0 10% 0 10%;width: 80%;height: 400px;">
+        <div style="margin: 80px 10% 0 10%;width: 80%;height: 400px;">
             <h3 class="text-center">图标系统：柱状图</h3>
             <div id="tableContainerBar2"></div>
         </div>
     </div>
     <div class="tab-pane fade" id="tabPie">
-        <h3 class="text-center">图标系统：饼状图</h3>
-        <div id="tableContainerPie" style="margin: 0 20% 0 20%;"></div>
+        <div style="margin: 80px 10% 0 10%;width: 80%;height: 400px;">
+            <h3 class="text-center">图标系统：饼状图</h3>
+            <div id="tableContainerPie" style="margin: 0 20% 0 20%;"></div>
+        </div>
     </div>
     <div class="tab-pane fade" id="tabChart">
-        <h3 class="text-center">图标系统：表格</h3>
-        <div id="tableContainerChart" style="width: 800px;" class="center-block">
-            <table class="table table-bordered table-hover table-responsive" data-toggle="table">
-                <thead>
-                    <tr>
-                        <th data-rowspan="2">公司</th>
-                        <th data-rowspan="2">净水池编号</th>
-                        <th data-colspan="2">2016年</th>
-                        <th data-colspan="2">2017年</th>
-                    </tr>
-                    <tr>
-                        <th>净水量</th>
-                        <th>污水量</th>
-                        <th>净水量</th>
-                        <th>污水量</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-rowspan="3">一公司</td>
-                        <td>净水池#1</td>
-                        <td>106.2</td>
-                        <td>7.6</td>
-                        <td>125.3</td>
-                        <td>8.2</td>
-                    </tr>
-                    <tr>
-                        <td>二公司</td>
-                        <td>净水池#2</td>
-                        <td>123.2</td>
-                        <td>10.6</td>
-                        <td>106.3</td>
-                        <td>9.6</td>
-                    </tr>
-                    <tr>
-                        <td>三公司</td>
-                        <td>净水池#3</td>
-                        <td>85.2</td>
-                        <td>4.9</td>
-                        <td>86.3</td>
-                        <td>4.2</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div style="margin: 80px 10% 0 10%;">
+            <h3 class="text-center">图标系统：表格</h3>
+            <div class="dropdown  center-block">
+                <button type="button" class="btn dropdown-toggle" id="chartDropdownMenu" data-toggle="dropdown">
+                    表格名称
+                </button>
+                <ul class="dropdown-menu" role="chartDropdownMenu" role='chartMenu'>
+                    <li><a href="#" onclick="showChart('累计数据')">累计数据</a></li>
+                    <li><a href="#" onclick="showChart('滤池数据')">滤池数据</a></li>
+                    <li><a href="#" onclick="showChart('设备启停一')">设备启停一</a></li>
+                    <li><a href="#" onclick="showChart('设备启停二')">设备启停二</a></li>
+                    <li><a href="#" onclick="showChart('中控室报表数据')">中控室报表数据</a></li>
+                </ul>
+            </div>
+            <div id="tableContainerChart" style="width: 800px;" class="center-block">
+                <script type="text/javascript">
+                    function showChart(ccp) {
+                        // 创建数据库对象
+                        var objdbConn = new ActiveXObject("ADODB.Connection");
+                        // DSN字符串
+                        var strdsn = "Driver={SQL Server};SERVER=127.0.0.1;UID=sa;PWD=123;DATABASE=tbsc";
+                        // 打开数据源
+                        objdbConn.Open(strdsn);
+                        // 执行SQL的数据库查询
+                        var objrs = objdbConn.Execute("SELECT * FROM "+ccp);
+                        // 获取字段数目
+                        var fdCount = objrs.Fields.Count - 1;
+                        // 检查是否有记录
+                        if (!objrs.EOF){
+                            document.write("<table class=\"table table-bordered table-hover table-responsive\" ><tr>");
+                            // 显示数据库的字段名称
+                            for (var i=0; i <= fdCount; i++)
+                                document.write("<td><b>" + objrs.Fields(i).Name + "</b></td>");
+                            document.write("</tr>");
+                            // 显示数据库内容
+                            while (!objrs.EOF){
+                                document.write("<tr>");
+                                // 显示每笔记录的字段
+                                for (i=0; i <= fdCount; i++)
+                                    document.write("<td valign='top'>" + objrs.Fields(i).Value + "</td>");
+                                document.write("</tr>");
+                                objrs.moveNext(); // 移到下一笔记录
+                            }
+                            document.write("</table>");
+                        }
+                        else
+                            document.write("数据库内没有记录!<br>");
+                        objrs.Close(); // 关闭记录集合
+                        objdbConn.Close(); // 关闭数据库链接
+                    }
+                </script>
+                <!--<table class="table table-bordered table-hover table-responsive" data-toggle="table">-->
+                <!--<thead>-->
+                <!--<tr>-->
+                <!--<th data-rowspan="2">公司</th>-->
+                <!--<th data-rowspan="2">净水池编号</th>-->
+                <!--<th data-colspan="2">2016年</th>-->
+                <!--<th data-colspan="2">2017年</th>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                <!--<th>净水量</th>-->
+                <!--<th>污水量</th>-->
+                <!--<th>净水量</th>-->
+                <!--<th>污水量</th>-->
+                <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody>-->
+                <!--<tr>-->
+                <!--<td data-rowspan="3">一公司</td>-->
+                <!--<td>净水池#1</td>-->
+                <!--<td>106.2</td>-->
+                <!--<td>7.6</td>-->
+                <!--<td>125.3</td>-->
+                <!--<td>8.2</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                <!--<td>二公司</td>-->
+                <!--<td>净水池#2</td>-->
+                <!--<td>123.2</td>-->
+                <!--<td>10.6</td>-->
+                <!--<td>106.3</td>-->
+                <!--<td>9.6</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                <!--<td>三公司</td>-->
+                <!--<td>净水池#3</td>-->
+                <!--<td>85.2</td>-->
+                <!--<td>4.9</td>-->
+                <!--<td>86.3</td>-->
+                <!--<td>4.2</td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+                <!--</table>-->
+            </div>
         </div>
     </div>
 </div>
