@@ -100,30 +100,33 @@
     <div class="tab-pane fade" id="tabChart">
         <div style="margin: 80px 10% 0 10%;">
             <h3 class="text-center">图标系统：表格</h3>
-            <div class="dropdown  center-block">
-                <button type="button" class="btn dropdown-toggle" id="chartDropdownMenu" data-toggle="dropdown">
-                    表格名称
-                </button>
-                <ul class="dropdown-menu" role="chartDropdownMenu" role='chartMenu'>
-                    <li><a href="#" onclick="showChart('累计数据')">累计数据</a></li>
-                    <li><a href="#" onclick="showChart('滤池数据')">滤池数据</a></li>
-                    <li><a href="#" onclick="showChart('设备启停一')">设备启停一</a></li>
-                    <li><a href="#" onclick="showChart('设备启停二')">设备启停二</a></li>
-                    <li><a href="#" onclick="showChart('中控室报表数据')">中控室报表数据</a></li>
-                </ul>
-            </div>
+            <!--<div class="dropdown  center-block">-->
+                <!--<button type="button" class="btn dropdown-toggle" id="chartDropdownMenu" data-toggle="dropdown">-->
+                    <!--表格名称-->
+                <!--</button>-->
+                <!--<ul class="dropdown-menu" role="chartDropdownMenu" role='chartMenu'>-->
+                    <!--<li><a href="#" onclick="showChart('累计数据')">累计数据</a></li>-->
+                    <!--<li><a href="#" onclick="showChart('滤池数据')">滤池数据</a></li>-->
+                    <!--<li><a href="#" onclick="showChart('设备启停一')">设备启停一</a></li>-->
+                    <!--<li><a href="#" onclick="showChart('设备启停二')">设备启停二</a></li>-->
+                    <!--<li><a href="#" onclick="showChart('中控室报表数据')">中控室报表数据</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+
+            <!--document.write()会重新打开文件流渲染页面，尽量减少使用。-->
             <div id="tableContainerChart" style="width: 800px;" class="center-block">
                 <script type="text/javascript">
-                    function showChart(ccp) {
                         // 创建数据库对象
                         var objdbConn = new ActiveXObject("ADODB.Connection");
                         // DSN字符串
-                        var strdsn = "Driver={SQL Server};SERVER=127.0.0.1;UID=sa;PWD=123;DATABASE=tbsc";
+                        var strdsn = "Driver={SQL Server};SERVER=127.0.0.1;UID=用户名;PWD=密码;DATABASE=数据库名";
                         // 打开数据源
+                        console.log("数据库连接OK");
                         objdbConn.Open(strdsn);
                         // 执行SQL的数据库查询
-                        var objrs = objdbConn.Execute("SELECT * FROM "+ccp);
+                        var objrs = objdbConn.Execute("SELECT * FROM 表数据");
                         // 获取字段数目
+                        console.log("表数据读取ok");
                         var fdCount = objrs.Fields.Count - 1;
                         // 检查是否有记录
                         if (!objrs.EOF){
@@ -147,7 +150,6 @@
                             document.write("数据库内没有记录!<br>");
                         objrs.Close(); // 关闭记录集合
                         objdbConn.Close(); // 关闭数据库链接
-                    }
                 </script>
                 <!--<table class="table table-bordered table-hover table-responsive" data-toggle="table">-->
                 <!--<thead>-->
