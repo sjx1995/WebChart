@@ -28,7 +28,7 @@ function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                 document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b style='color:green;'>子数据查询成功</b>";
                 document.getElementsByName('tableName')[pageIndex].disabled = false;
             } else {
-                document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b style='color:red;'>查询出错，请联系管理员。错误代码：</b><br>"+data.code;
+                document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b style='color:red;'>查询出错，请联系管理员。</b><br>错误代码：" + data.code;
             }
 
             // 将子数据表名保存在数组中

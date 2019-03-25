@@ -6,19 +6,3 @@
 * */
 
 
-
-
-
-
-
-
-
-// window.onload = function () {
-//     setInterval(function () {
-//         ajaxHistogram('2017-07-20', 'r/lvchi', 0);
-//     }, 1);
-// }
-
-
-
-

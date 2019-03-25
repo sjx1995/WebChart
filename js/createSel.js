@@ -86,7 +86,7 @@ function createHistogramSel(histogramSelData, pageIndex, querytype) {
         } else if (dataDate.indexOf("十二月") >= 0) {
             dataDate = dataDate.replace(" 十二月", "-12");
         }
-        if (pageIndex === 0 || pageIndex === 3) {
+        if (pageIndex === 0 || pageIndex === 3 || pageIndex === 6) {
             dataDate = dataDate.replace(" ", "-");
         }
         console.log("查询时间：" + dataDate);

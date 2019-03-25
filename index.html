@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>Web Title</title>
     <!-- Bootstrap -->
@@ -42,12 +42,20 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">折线图</a>
                     <ul class="dropdown-menu" id="dropdownTable1">
-                        <li><a href="#tabBar4" data-toggle="tab" onclick="queryDayLine();">日报表</a></li>
-                        <li><a href="#tabBar5" data-toggle="tab" onclick="queryMonthLine()">月报表</a></li>
-                        <li><a href="#tabBar6" data-toggle="tab" onclick="queryYearLine()">年报表</a></li>
+                        <li><a href="#tabLine1" data-toggle="tab" onclick="queryDayLine();">日报表</a></li>
+                        <li><a href="#tabLine2" data-toggle="tab" onclick="queryMonthLine()">月报表</a></li>
+                        <li><a href="#tabLine3" data-toggle="tab" onclick="queryYearLine()">年报表</a></li>
                     </ul>
                 </li>
-                <li><a href="#tabPie" data-toggle="tab">饼状图</a></li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">饼状图</a>
+                    <ul class="dropdown-menu" id="dropdownTable2">
+                        <li><a href="#tabPie1" data-toggle="tab" onclick="queryDayPie();">日报表</a></li>
+                        <li><a href="#tabPie2" data-toggle="tab" onclick="queryMonthPie()">月报表</a></li>
+                        <li><a href="#tabPie3" data-toggle="tab" onclick="queryYearPie()">年报表</a></li>
+                    </ul>
+                </li>
                 <!--<li><a href="#tabChart" data-toggle="tab">表格</a> </li>-->
             </ul>
         </div>
@@ -194,7 +202,7 @@
 
         </div>
     </div>
-    <div class="tab-pane fade" id="tabBar4">
+    <div class="tab-pane fade" id="tabLine1">
         <div class="main-info-page">
             <h3 class="text-center">日报表 - 折线图</h3>
             <div class="container-fluid">
@@ -233,7 +241,7 @@
             <div id="Histogram_3" class="Histogram"></div>
         </div>
     </div>
-    <div class="tab-pane fade" id="tabBar5">
+    <div class="tab-pane fade" id="tabLine2">
         <div class="main-info-page">
             <h3 class="text-center">月报表 - 折线图</h3>
             <div class="container-fluid">
@@ -273,7 +281,7 @@
             <div id="Histogram_4" class="Histogram"></div>
         </div>
     </div>
-    <div class="tab-pane fade" id="tabBar6">
+    <div class="tab-pane fade" id="tabLine3">
         <div class="main-info-page">
             <h3 class="text-center">年报表 - 折线图</h3>
             <div class="container-fluid">
@@ -313,10 +321,123 @@
 
         </div>
     </div>
-    <div class="tab-pane fade" id="tabPie">
-        <div style="margin: 80px 10% 0 10%;width: 80%;height: 400px;">
-            <h3 class="text-center">图标系统：饼状图</h3>
-            <div id="tableContainerPie" style="margin: 0 20% 0 20%;"></div>
+    <div class="tab-pane fade" id="tabPie1">
+        <div class="main-info-page">
+            <h3 class="text-center">日报表 - 饼状图</h3>
+            <div class="container-fluid">
+                <div class="row form-inline form-group">
+                    <!--时间选择-->
+                    <div class="date-form-group col-md-5 col-sm-5 form-group">
+                        <div class="input-group date form_date day_sel" data-date="" data-date-format="yyyy MM dd"
+                             data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            <input class="form-control" size="16" type="text" value="" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    <!--表选择-->
+                    <div class="col-md-5 col-sm-5 form-group">
+                        <select class="selectpicker" name="bigTable" id="bigTable_6"></select>
+                    </div>
+                    <div class="col-md-2 col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="查询" class="query btn btn-primary btn-block">查询</button>
+                    </div>
+                </div>
+                <div class="row form-inline form-group">
+                    <!--表选择-->
+                    <div class="col-md-5 col-sm-5 form-group">
+                        <select class="selectpicker" name="tableName" id="tableName_6" disabled=false>
+                            <option>==请先选择表类型及时间==</option>
+                        </select>
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        <p class="queryP">查询数据状态：<span id="queryStatus_6" class="queryStatus"><b
+                                style='color: black'>请选择表和时间以查询</b></span></p>
+                    </div>
+                </div>
+            </div>
+            <div id="Histogram_6" class="Histogram"></div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="tabPie2">
+        <div class="main-info-page">
+            <h3 class="text-center">月报表 - 饼状图</h3>
+            <div class="container-fluid">
+                <div class="row form-inline form-group">
+                    <div class="date-form-group col-md-5 col-sm-5 form-group">
+                        <!--时间选择-->
+                        <div class="input-group date form_date col-md-5 month_sel" data-date=""
+                             data-date-format="yyyy MM"
+                             data-link-field="dtp_input2" data-link-format="yyyy-mm">
+                            <input class="form-control" size="16" type="text" value="" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-5 form-group">
+                        <!--表选择-->
+                        <select class="selectpicker" name="bigTable" id="bigTable_7"></select>
+                    </div>
+                    <div class="col-md-2 col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="查询" class="query btn btn-primary btn-block">查询</button>
+                    </div>
+                </div>
+                <div class="row form-inline form-group">
+                    <div class="col-md-5 col-sm-5 form-group">
+                        <!--表选择-->
+                        <select class="selectpicker" name="tableName" id="tableName_7" disabled=false>
+                            <option>==请先选择表类型及时间==</option>
+                        </select>
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        <p class="queryP">查询数据状态：<span class="queryStatus" id="queryStatus_7"><b
+                                style='color: black'>请选择表和时间以查询</b></span></p>
+                    </div>
+                </div>
+            </div>
+            <div id="Histogram_7" class="Histogram"></div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="tabPie3">
+        <div class="main-info-page">
+            <h3 class="text-center">年报表 - 饼状图</h3>
+            <div class="container-fluid">
+                <div class="row form-inline form-group">
+                    <div class="date-form-group col-md-5 col-sm-5 form-group">
+                        <!--时间选择-->
+                        <div class="input-group date form_date col-md-5 year_sel" data-date="" data-date-format="yyyy"
+                             data-link-field="dtp_input2" data-link-format="yyyy">
+                            <input class="form-control" size="16" type="text" value="" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-5 form-group">
+                        <!--表选择-->
+                        <select class="selectpicker" name="bigTable" id="bigTable_8"></select>
+                    </div>
+                    <div class="col-md-2 col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="查询" class="query btn btn-primary btn-block">查询</button>
+                    </div>
+                </div>
+                <div class="row form-inline form-group">
+                    <div class="col-md-5 col-sm-5 form-group">
+                        <!--表选择-->
+                        <select class="selectpicker" name="tableName" id="tableName_8" disabled=false>
+                            <option>==请先选择表类型及时间==</option>
+                        </select>
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        <p class="queryP">查询数据状态：<span class="queryStatus" id="queryStatus_8"><b
+                                style='color: black'>请选择表和时间以查询</b></span></p>
+                    </div>
+                </div>
+            </div>
+            <div id="Histogram_8" class="Histogram"></div>
+
         </div>
     </div>
     <!--<div class="tab-pane fade" id="tabChart">-->
@@ -456,6 +577,7 @@
 <script src="js/trigger.js"></script>
 <script src="js/createSel.js"></script>
 <script src="js/require.js"></script>
+<script src="js/echarts.theme.js"></script>
 <script src="js/createTable.js"></script>
 
 

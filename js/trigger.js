@@ -3,7 +3,7 @@
 * 2019.3.25
 * by.Sunly
 *
-* 增加折线图入口
+* 增加折线图、饼状图入口
 * 2019.3.25 Sunly
 * */
 
@@ -110,5 +110,33 @@ function queryYearLine() {
     let pageIndex = 5;
     console.log("年报表，当前在第" + pageIndex + "个页面，大表数据：" + yearHistogramSelData);
     let querytype = 'line';
+    createHistogramSel(yearHistogramSelData, pageIndex, querytype);
+}
+
+// 饼状图入口
+function queryDayPie() {
+    let dayHistogramSelData = daySelData;
+    // 设定元素在页面数组中的位置
+    let pageIndex = 6;
+    console.log("日报表，当前在第" + pageIndex + "个页面，大表数据：" + dayHistogramSelData);
+    let querytype = 'pie';
+    createHistogramSel(dayHistogramSelData, pageIndex, querytype);
+}
+
+function queryMonthPie() {
+    let monthHistogramSelData = monthSelData;
+    // 设定元素在页面数组中的位置
+    let pageIndex = 7;
+    console.log("月报表，当前在第" + pageIndex + "个页面，大表数据：" + monthHistogramSelData);
+    let querytype = 'pie';
+    createHistogramSel(monthHistogramSelData, pageIndex, querytype);
+}
+
+function queryYearPie() {
+    let yearHistogramSelData = yearSelData;
+    // 设定元素在页面数组中的位置
+    let pageIndex = 8;
+    console.log("年报表，当前在第" + pageIndex + "个页面，大表数据：" + yearHistogramSelData);
+    let querytype = 'pie';
     createHistogramSel(yearHistogramSelData, pageIndex, querytype);
 }
