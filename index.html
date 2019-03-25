@@ -7,88 +7,191 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>Web Title</title>
     <!-- Bootstrap -->
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
-    <style type="text/css">
-        body{
-
-        }
-        .navbar {
-            opacity: 1;
-        }
-        /*表格文字居中*/
-        .table th, .table td {
-            text-align: center;
-            vertical-align: middle!important;
-        }
-    </style>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <!--时间控件-->
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#meun1" aria-expanded="false">
+            <a class="navbar-brand" class="navbar-brand" href="#">Chart Web</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#meun1"
+                    aria-expanded="false">
                 <span class="sr-only">Navbar</span>
                 <!--小屏幕菜单合并图标-->
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" class="navbar-brand" href="#">Chart Web</a>
         </div>
         <div class="collapse navbar-collapse" id="meun1">
             <ul class="nav navbar-nav">
-                <li><a href="#tabLine" data-toggle="tab">折线图</a> </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">柱状图</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">柱状图</a>
                     <ul class="dropdown-menu" id="dropdownTable">
-                        <li><a href="#tabBar1" data-toggle="tab">柱状图1</a> </li>
-                        <li><a href="#tabBar2" data-toggle="tab">柱状图2</a> </li>
+                        <li><a href="#tabBar1" data-toggle="tab" onclick="queryDayHistogram();">日报表</a></li>
+                        <li><a href="#tabBar2" data-toggle="tab" onclick="queryMonthHistogram()">月报表</a></li>
+                        <li><a href="#tabBar3" data-toggle="tab" onclick="queryYearHistogram()">年报表</a></li>
                     </ul>
                 </li>
-                <li><a href="#tabPie" data-toggle="tab">饼状图</a> </li>
-                <li><a href="#tabChart" data-toggle="tab">表格</a> </li>
+                <li><a href="#tabLine" data-toggle="tab">折线图</a></li>
+                <li><a href="#tabPie" data-toggle="tab">饼状图</a></li>
+                <!--<li><a href="#tabChart" data-toggle="tab">表格</a> </li>-->
             </ul>
         </div>
         <!--<div class="collapse navbar-collapse" id="meun1">-->
-            <!--<ul class="nav navbar-nav">-->
-                <!--<li class="dropdown active">-->
-                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">图表类型<span class="caret"></span></a>-->
-                    <!--<ul class="dropdown-menu" id="dropdownTable">-->
-                        <!--<li><a href="#TableLine" data-toggle="tab">折线图</a></li>-->
-                        <!--&lt;!&ndash;-->
-                        <!--<li role="separator" class="divider"></li>-->
-                        <!--&ndash;&gt;-->
-                        <!--<li><a href="#Tablebar1" data-toggle="tab">柱状图</a></li>-->
-                        <!--<li><a href="#TablePie" data-toggle="tab">饼状图</a></li>-->
-                        <!--<li><a href="#TableChart" data-toggle="tab">表格</a></li>-->
-                    <!--</ul>-->
-                <!--</li>-->
-                <!--<li><a href="#">LinkAdd1</a> </li>-->
-                <!--<li><a href="#">LinkAdd2</a> </li>-->
-            <!--</ul>-->
+        <!--<ul class="nav navbar-nav">-->
+        <!--<li class="dropdown active">-->
+        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">图表类型<span class="caret"></span></a>-->
+        <!--<ul class="dropdown-menu" id="dropdownTable">-->
+        <!--<li><a href="#TableLine" data-toggle="tab">折线图</a></li>-->
+        <!--&lt;!&ndash;-->
+        <!--<li role="separator" class="divider"></li>-->
+        <!--&ndash;&gt;-->
+        <!--<li><a href="#Tablebar1" data-toggle="tab">柱状图</a></li>-->
+        <!--<li><a href="#TablePie" data-toggle="tab">饼状图</a></li>-->
+        <!--<li><a href="#TableChart" data-toggle="tab">表格</a></li>-->
+        <!--</ul>-->
+        <!--</li>-->
+        <!--<li><a href="#">LinkAdd1</a> </li>-->
+        <!--<li><a href="#">LinkAdd2</a> </li>-->
+        <!--</ul>-->
         <!--</div>-->
     </div>
 </nav>
 <div class="tab-content" id="myTableContent">
-    <div class="tab-pane fade active in" active id="tabLine">
-        <div style="margin: 80px 10% 0 10%;height: 400px;width: 80%;">
-            <h3 class="text-center">图表系统：折线图</h3>
-            <!--折线图容器-->
-            <div id="tableContainerLine"></div>
-        </div>
+    <div class="tab-pane fade" id="main_tab">
+        <h2>hello world</h2>
     </div>
     <div class="tab-pane fade" id="tabBar1">
-        <div style="margin: 80px 10% 0 10%;width: 80%;height: 400px;">
-            <h3 class="text-center">图标系统：柱状图</h3>
-            <div id="tableContainerBar1"></div>
+        <div class="main-info-page">
+            <h3 class="text-center">日报表 - 柱状图</h3>
+            <div class="container-fluid">
+                <div class="row form-inline form-group">
+                    <!--时间选择-->
+                    <div class="date-form-group col-md-5 col-sm-5 form-group">
+                        <div class="input-group date form_date day_sel" data-date="" data-date-format="yyyy MM dd"
+                             data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            <input class="form-control" size="16" type="text" value="" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    <!--表选择-->
+                    <div class="col-md-5 col-sm-5 form-group">
+                        <select class="selectpicker" name="bigTable" id="bigTable"></select>
+                    </div>
+                    <div class="col-md-2 col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="查询" class="query btn btn-primary btn-block">查询</button>
+                    </div>
+                </div>
+                <div class="row form-inline form-group">
+                    <!--表选择-->
+                    <div class="col-md-5 col-sm-5 form-group">
+                        <select class="selectpicker" name="tableName" id="tableName" disabled=false>
+                            <option>==请先选择表类型及时间==</option>
+                        </select>
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        <p class="queryP">查询数据状态：<span id="queryStatus" class="queryStatus"><b
+                                style='color: black'>请选择表和时间以查询</b></span></p>
+                    </div>
+                </div>
+            </div>
+            <div id="Histogram" class="Histogram"></div>
         </div>
     </div>
     <div class="tab-pane fade" id="tabBar2">
-        <div style="margin: 80px 10% 0 10%;width: 80%;height: 400px;">
-            <h3 class="text-center">图标系统：柱状图</h3>
-            <div id="tableContainerBar2"></div>
+        <div class="main-info-page">
+            <h3 class="text-center">月报表 - 柱状图</h3>
+            <div class="container-fluid">
+                <div class="row form-inline form-group">
+                    <div class="date-form-group col-md-5 col-sm-5 form-group">
+                        <!--时间选择-->
+                        <div class="input-group date form_date col-md-5 month_sel" data-date=""
+                             data-date-format="yyyy MM"
+                             data-link-field="dtp_input2" data-link-format="yyyy-mm">
+                            <input class="form-control" size="16" type="text" value="" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-5 form-group">
+                        <!--表选择-->
+                        <select class="selectpicker" name="bigTable" id="bigTable_1"></select>
+                    </div>
+                    <div class="col-md-2 col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="查询" class="query btn btn-primary btn-block">查询</button>
+                    </div>
+                </div>
+                <div class="row form-inline form-group">
+                    <div class="col-md-5 col-sm-5 form-group">
+                        <!--表选择-->
+                        <select class="selectpicker" name="tableName" id="tableName_1" disabled=false>
+                            <option>==请先选择表类型及时间==</option>
+                        </select>
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        <p class="queryP">查询数据状态：<span class="queryStatus" id="queryStatus_1"><b
+                                style='color: black'>请选择表和时间以查询</b></span></p>
+                    </div>
+                </div>
+            </div>
+            <div id="Histogram_1" class="Histogram"></div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="tabBar3">
+        <div class="main-info-page">
+            <h3 class="text-center">年报表 - 柱状图</h3>
+            <div class="container-fluid">
+                <div class="row form-inline form-group">
+                    <div class="date-form-group col-md-5 col-sm-5 form-group">
+                        <!--时间选择-->
+                        <div class="input-group date form_date col-md-5 year_sel" data-date="" data-date-format="yyyy"
+                             data-link-field="dtp_input2" data-link-format="yyyy">
+                            <input class="form-control" size="16" type="text" value="" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-5 form-group">
+                        <!--表选择-->
+                        <select class="selectpicker" name="bigTable" id="bigTable_2"></select>
+                    </div>
+                    <div class="col-md-2 col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="查询" class="query btn btn-primary btn-block">查询</button>
+                    </div>
+                </div>
+                <div class="row form-inline form-group">
+                    <div class="col-md-5 col-sm-5 form-group">
+                        <!--表选择-->
+                        <select class="selectpicker" name="tableName" id="tableName_2" disabled=false>
+                            <option>==请先选择表类型及时间==</option>
+                        </select>
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        <p class="queryP">查询数据状态：<span class="queryStatus" id="queryStatus_2"><b
+                                style='color: black'>请选择表和时间以查询</b></span></p>
+                    </div>
+                </div>
+            </div>
+            <div id="Histogram_2" class="Histogram"></div>
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="tabLine">
+        <div style="margin: 80px 10% 0 10%;height: 400px;width: 80%;">
+            <h3 class="text-center">图表系统：折线图</h3>
+            <!--折线图容器-->
+
+
         </div>
     </div>
     <div class="tab-pane fade" id="tabPie">
@@ -97,128 +200,145 @@
             <div id="tableContainerPie" style="margin: 0 20% 0 20%;"></div>
         </div>
     </div>
-    <div class="tab-pane fade" id="tabChart">
-        <div style="margin: 80px 10% 0 10%;">
-            <h3 class="text-center">图标系统：表格</h3>
-            <!--<div class="dropdown  center-block">-->
-                <!--<button type="button" class="btn dropdown-toggle" id="chartDropdownMenu" data-toggle="dropdown">-->
-                    <!--表格名称-->
-                <!--</button>-->
-                <!--<ul class="dropdown-menu" role="chartDropdownMenu" role='chartMenu'>-->
-                    <!--<li><a href="#" onclick="showChart('累计数据')">累计数据</a></li>-->
-                    <!--<li><a href="#" onclick="showChart('滤池数据')">滤池数据</a></li>-->
-                    <!--<li><a href="#" onclick="showChart('设备启停一')">设备启停一</a></li>-->
-                    <!--<li><a href="#" onclick="showChart('设备启停二')">设备启停二</a></li>-->
-                    <!--<li><a href="#" onclick="showChart('中控室报表数据')">中控室报表数据</a></li>-->
-                <!--</ul>-->
-            <!--</div>-->
-
-            <!--document.write()会重新打开文件流渲染页面，尽量减少使用。-->
-            <div id="tableContainerChart" style="width: 800px;" class="center-block">
-                <script type="text/javascript">
-                        // 创建数据库对象
-                        var objdbConn = new ActiveXObject("ADODB.Connection");
-                        // DSN字符串
-                        var strdsn = "Driver={SQL Server};SERVER=127.0.0.1;UID=用户名;PWD=密码;DATABASE=数据库名";
-                        // 打开数据源
-                        console.log("数据库连接OK");
-                        objdbConn.Open(strdsn);
-                        // 执行SQL的数据库查询
-                        var objrs = objdbConn.Execute("SELECT * FROM 表数据");
-                        // 获取字段数目
-                        console.log("表数据读取ok");
-                        var fdCount = objrs.Fields.Count - 1;
-                        // 检查是否有记录
-                        if (!objrs.EOF){
-                            document.write("<table class=\"table table-bordered table-hover table-responsive\" ><tr>");
-                            // 显示数据库的字段名称
-                            for (var i=0; i <= fdCount; i++)
-                                document.write("<td><b>" + objrs.Fields(i).Name + "</b></td>");
-                            document.write("</tr>");
-                            // 显示数据库内容
-                            while (!objrs.EOF){
-                                document.write("<tr>");
-                                // 显示每笔记录的字段
-                                for (i=0; i <= fdCount; i++)
-                                    document.write("<td valign='top'>" + objrs.Fields(i).Value + "</td>");
-                                document.write("</tr>");
-                                objrs.moveNext(); // 移到下一笔记录
-                            }
-                            document.write("</table>");
-                        }
-                        else
-                            document.write("数据库内没有记录!<br>");
-                        objrs.Close(); // 关闭记录集合
-                        objdbConn.Close(); // 关闭数据库链接
-                </script>
-                <!--<table class="table table-bordered table-hover table-responsive" data-toggle="table">-->
-                <!--<thead>-->
-                <!--<tr>-->
-                <!--<th data-rowspan="2">公司</th>-->
-                <!--<th data-rowspan="2">净水池编号</th>-->
-                <!--<th data-colspan="2">2016年</th>-->
-                <!--<th data-colspan="2">2017年</th>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<th>净水量</th>-->
-                <!--<th>污水量</th>-->
-                <!--<th>净水量</th>-->
-                <!--<th>污水量</th>-->
-                <!--</tr>-->
-                <!--</thead>-->
-                <!--<tbody>-->
-                <!--<tr>-->
-                <!--<td data-rowspan="3">一公司</td>-->
-                <!--<td>净水池#1</td>-->
-                <!--<td>106.2</td>-->
-                <!--<td>7.6</td>-->
-                <!--<td>125.3</td>-->
-                <!--<td>8.2</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>二公司</td>-->
-                <!--<td>净水池#2</td>-->
-                <!--<td>123.2</td>-->
-                <!--<td>10.6</td>-->
-                <!--<td>106.3</td>-->
-                <!--<td>9.6</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>三公司</td>-->
-                <!--<td>净水池#3</td>-->
-                <!--<td>85.2</td>-->
-                <!--<td>4.9</td>-->
-                <!--<td>86.3</td>-->
-                <!--<td>4.2</td>-->
-                <!--</tr>-->
-                <!--</tbody>-->
-                <!--</table>-->
-            </div>
-        </div>
-    </div>
+    <!--<div class="tab-pane fade" id="tabChart">-->
+    <!--<div style="margin: 80px 10% 0 10%;">-->
+    <!--<h3 class="text-center">图标系统：表格</h3>-->
+    <!--&lt;!&ndash;<div class="dropdown  center-block">&ndash;&gt;-->
+    <!--&lt;!&ndash;<button type="button" class="btn dropdown-toggle" id="chartDropdownMenu" data-toggle="dropdown">&ndash;&gt;-->
+    <!--&lt;!&ndash;表格名称&ndash;&gt;-->
+    <!--&lt;!&ndash;</button>&ndash;&gt;-->
+    <!--&lt;!&ndash;<ul class="dropdown-menu" role="chartDropdownMenu" role='chartMenu'>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li><a href="#" onclick="showChart('累计数据')">累计数据</a></li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li><a href="#" onclick="showChart('滤池数据')">滤池数据</a></li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li><a href="#" onclick="showChart('设备启停一')">设备启停一</a></li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li><a href="#" onclick="showChart('设备启停二')">设备启停二</a></li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li><a href="#" onclick="showChart('中控室报表数据')">中控室报表数据</a></li>&ndash;&gt;-->
+    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;document.write()会重新打开文件流渲染页面，尽量减少使用。&ndash;&gt;-->
+    <!--<div id="tableContainerChart" style="width: 100%;" class="center-block">-->
+    <!--<script type="text/javascript">-->
+    <!--// 创建数据库对象-->
+    <!--var objdbConn = new ActiveXObject("ADODB.Connection");-->
+    <!--// DSN字符串-->
+    <!--var strdsn = "Driver={SQL Server};SERVER=219.145.189.87;UID=sa;PWD=87411688;DATABASE=wnbsc";-->
+    <!--// 打开数据源-->
+    <!--console.log("数据库连接OK");-->
+    <!--objdbConn.Open(strdsn);-->
+    <!--// 执行SQL的数据库查询-->
+    <!--var objrs = objdbConn.Execute("SELECT * FROM 累计数据");-->
+    <!--// 获取字段数目-->
+    <!--console.log("表数据读取ok");-->
+    <!--var fdCount = objrs.Fields.Count - 1;-->
+    <!--// var fdRow = objrs.Rows.Count - 1;-->
+    <!--var fdRow = objdbConn.Execute("SELECT COUNT(*) FROM 累计数据");-->
+    <!--console.log("fdcount(objrs.Fields.Count-1 )="+fdCount);-->
+    <!--// console.log("fdcount(objrs.Rows.Count-1 )="+fdRow);-->
+    <!--// 检查是否有记录-->
+    <!--if (!objrs.EOF){-->
+    <!--document.write("<table class=\"table table-bordered table-hover table-responsive\" ><tr>");-->
+    <!--// 显示数据库的字段名称-->
+    <!--for (var i=0; i <= fdCount; i++)-->
+    <!--document.write("<td><b>" + objrs.Fields(i).Name + "</b></td>");-->
+    <!--document.write("</tr>");-->
+    <!--// 显示数据库内容-->
+    <!--//读取数据库数据，直到读取不出来数据为止-->
+    <!--// while (!objrs.EOF){-->
+    <!--//     document.write("<tr>");-->
+    <!--//     // 显示每笔记录的字段-->
+    <!--//     for (i=0; i <= fdCount; i++)-->
+    <!--//         document.write("<td valign='top'>" + objrs.Fields(i).Value + "</td>");-->
+    <!--//     document.write("</tr>");-->
+    <!--//     objrs.moveNext(); // 移到下一笔记录-->
+    <!--// }-->
+    <!--document.write("</table>");-->
+    <!--}-->
+    <!--else-->
+    <!--document.write("数据库内没有记录!<br>");-->
+    <!--objrs.Close(); // 关闭记录集合-->
+    <!--objdbConn.Close(); // 关闭数据库链接-->
+    <!--</script>-->
+    <!--&lt;!&ndash;<table class="table table-bordered table-hover table-responsive" data-toggle="table">&ndash;&gt;-->
+    <!--&lt;!&ndash;<thead>&ndash;&gt;-->
+    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;<th data-rowspan="2">公司</th>&ndash;&gt;-->
+    <!--&lt;!&ndash;<th data-rowspan="2">净水池编号</th>&ndash;&gt;-->
+    <!--&lt;!&ndash;<th data-colspan="2">2016年</th>&ndash;&gt;-->
+    <!--&lt;!&ndash;<th data-colspan="2">2017年</th>&ndash;&gt;-->
+    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;<th>净水量</th>&ndash;&gt;-->
+    <!--&lt;!&ndash;<th>污水量</th>&ndash;&gt;-->
+    <!--&lt;!&ndash;<th>净水量</th>&ndash;&gt;-->
+    <!--&lt;!&ndash;<th>污水量</th>&ndash;&gt;-->
+    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;</thead>&ndash;&gt;-->
+    <!--&lt;!&ndash;<tbody>&ndash;&gt;-->
+    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td data-rowspan="3">一公司</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>净水池#1</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>106.2</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>7.6</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>125.3</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>8.2</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>二公司</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>净水池#2</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>123.2</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>10.6</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>106.3</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>9.6</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>三公司</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>净水池#3</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>85.2</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>4.9</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>86.3</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>4.2</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;</tbody>&ndash;&gt;-->
+    <!--&lt;!&ndash;</table>&ndash;&gt;-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
 </div>
-
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <!--加载BootsrapTable-->
-<script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
-
+<!--<script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>-->
 <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
 <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
 <!--[if lt IE 9]>
-<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-
+<!--导入时间控件-->
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/bootstrap-datetimepicker.zh-CN.js"></script>
 <!--引入highcharts-->
-<script src="./js/highcharts.js"></script>
-<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
-<script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+<!--<script src="./js/highcharts.js"></script>-->
+<!--<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>-->
+<!--<script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>-->
 <!--<script src="..\Highcharts\code\highcharts-more.js"></script>-->
-<script src="https://img.hcharts.cn/highcharts/modules/sunburst.js"></script>
+<!--<script src="https://img.hcharts.cn/highcharts/modules/sunburst.js"></script>-->
+<!--Bootstrap-Select-->
+<!--<link href="http://cdn.bootcss.com/bootstrap-select/2.0.0-beta1/css/bootstrap-select.min.css" rel="stylesheet">-->
+<!--<script src="http://cdn.bootcss.com/bootstrap-select/2.0.0-beta1/js/bootstrap-select.min.js"></script>-->
+<!--引入echarts-->
+<script src="./js/echarts.common.min.js"></script>
 <!--导入图表数据-->
-<script src="./js/chartNum.js"></script>
+<!--<script src="./js/chartNum.js"></script>-->
+<!--引入柱状图-->
+<script src="js/init.js"></script>
+<script src="js/trigger.js"></script>
+<script src="js/createSel.js"></script>
+<script src="js/require.js"></script>
+<script src="js/createTable.js"></script>
+
+
 </body>
 </html>
