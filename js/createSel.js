@@ -7,7 +7,7 @@
 
 
 // 创建柱状图大表数据
-function createHistogramSel(histogramSelData, pageIndex,querytype) {
+function createHistogramSel(histogramSelData, pageIndex, querytype) {
     // 初始化查询状态
     document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b style='color: black'>请选择表和时间以查询</b>";
     // 初始化时间控件
@@ -86,7 +86,7 @@ function createHistogramSel(histogramSelData, pageIndex,querytype) {
         } else if (dataDate.indexOf("十二月") >= 0) {
             dataDate = dataDate.replace(" 十二月", "-12");
         }
-        if (pageIndex === 0) {
+        if (pageIndex === 0 || pageIndex === 3) {
             dataDate = dataDate.replace(" ", "-");
         }
         console.log("查询时间：" + dataDate);
@@ -104,7 +104,7 @@ function createHistogramSel(histogramSelData, pageIndex,querytype) {
         // 向服务器请求子数据
         // 判断减少无效请求
         if (dataDate && tableType) {
-            ajaxHistogram(dataDate, tableType, pageIndex,querytype);
+            ajaxHistogram(dataDate, tableType, pageIndex, querytype);
         } else {
             document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b style='color: red'>查询条件不足</b>";
         }

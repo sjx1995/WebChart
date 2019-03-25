@@ -8,11 +8,11 @@
 
 // 初始化时间控件
 function initTime(pageIndex) {
-    if (pageIndex === 0) {
+    if (pageIndex === 0 || pageIndex === 3) {
         createDaySel();
-    } else if (pageIndex === 1) {
+    } else if (pageIndex === 1 || pageIndex === 4) {
         createMonthSel();
-    } else if (pageIndex === 2) {
+    } else if (pageIndex === 2 || pageIndex === 5) {
         createYearSel();
     }
     console.log("时间初始化完成");

@@ -10,15 +10,11 @@
 //  用户选择的大表，数组
 //  查询时间，字符串
 //  页面索引，数字
-function ajaxHistogram(dataDate, tableType, pageIndex,querytype) {
+function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
     $.ajax({
         'url': 'http://192.168.0.174:5000/' + tableType + "/" + dataDate,
         'data': {},
         'success': function (data) {
-
-            // 显示查询状态
-            document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b style='color:green;'>子数据查询成功</b>";
-            document.getElementsByName('tableName')[pageIndex].disabled = false;
 
             // 把tableType格式化
             tableType = tableType.slice(2);
@@ -26,6 +22,14 @@ function ajaxHistogram(dataDate, tableType, pageIndex,querytype) {
             // 获取数据
             var data = data[tableType];
             console.log(data);
+
+            // 显示查询状态
+            if (data.code === 'success') {
+                document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b style='color:green;'>子数据查询成功</b>";
+                document.getElementsByName('tableName')[pageIndex].disabled = false;
+            } else {
+                document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b style='color:red;'>查询出错，请联系管理员。错误代码：</b><br>"+data.code;
+            }
 
             // 将子数据表名保存在数组中
             var nameArr = [];
@@ -69,7 +73,7 @@ function ajaxHistogram(dataDate, tableType, pageIndex,querytype) {
                 console.log("单位：" + unit);
 
                 // 创建表
-                createHis(data, name, date, tableVal, unit, pageIndex,querytype);
+                createHis(data, name, date, tableVal, unit, pageIndex, querytype);
                 console.log("创建成功第" + curIndex + "张表");
             };
         },
