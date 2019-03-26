@@ -1,6 +1,6 @@
 # WebChart
 A chart website 
-一个基于Bootstrap和Highcharts的报表页面
+一个基于Bootstrap和Echarts的报表页面
 
 ---
 
