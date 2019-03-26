@@ -41,8 +41,13 @@ function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
             // 创建子数据列表
             let mainSel = createHisLi(nameArr, pageIndex);
 
+            let pieTypeSel = document.getElementsByName('pieType')[pageIndex - 6];
+
             // 子数据列表改变时，触发事件
-            mainSel.onchange = function () {
+            pieTypeSel.onchange = paintTable;
+            mainSel.onchange = paintTable;
+
+            function paintTable() {
 
                 // 当前索引
                 let curIndex = mainSel[mainSel.selectedIndex].value;
@@ -72,8 +77,11 @@ function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                 let unit = data.data[name]["unit"];
                 console.log("单位：" + unit);
 
+                //获取饼状图类型
+                let pieType = getPieType(pieTypeSel, pageIndex);
+
                 // 创建表
-                createHis(data, name, date, tableVal, unit, pageIndex, querytype);
+                createHis(data, name, date, tableVal, unit, pageIndex, querytype, pieType);
                 console.log("创建成功第" + curIndex + "张表");
             };
         },

@@ -17,7 +17,8 @@
 //  单位（字符串）
 //  页面索引（数字）
 //  子数据名（字符串）
-function createHis(data, name, date, tableValue, unit, pageIndex, querytype,) {
+//  饼状图类型（字符串||null）
+function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pieType) {
     var myChart = echarts.init(document.getElementsByClassName('Histogram')[pageIndex], 'walden');
     var tableSubtext = document.getElementsByTagName("h3")[pageIndex].innerText;
 
@@ -128,11 +129,8 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype,) {
                 formatter: "{a}<br/>{b} : {c} ({d}%)"
             },
             legend: {
-                type: 'scroll',
-                orient: 'vertical',
-                right: 40,
-                top: 20,
-                bottom: 20,
+                x : 'center',
+                y : 'bottom',
                 data: pieDateArr,
                 selected: pieDataDefaultDis
             },
@@ -140,8 +138,9 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype,) {
                 {
                     name: name,
                     type: 'pie',
-                    radius: '55%',
-                    center: ['40%', '50%'],
+                    radius:  [30, 200],
+                    center: 'center',
+                    roseType: pieType,
                     data: pieDataArr,
                     itemStyle: {
                         emphasis: {
@@ -159,4 +158,15 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype,) {
 
 // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
+}
+
+
+// 获取饼状图类型
+function getPieType(pieTypeSel, pageIndex) {
+    let pieType = null;
+    if (pieTypeSel.value === 1 || pieTypeSel.value === '1') {
+        pieType = 'area';
+    }
+    return pieType;
+
 }
