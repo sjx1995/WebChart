@@ -128,9 +128,16 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
                 trigger: 'item',
                 formatter: "{a}<br/>{b} : {c} ({d}%)"
             },
+            toolbox: {
+                feature: {
+                    dataView: {show: true, readOnly: false},
+                    restore: {show: true},
+                    saveAsImage: {show: true}
+                }
+            },
             legend: {
-                x : 'center',
-                y : 'bottom',
+                x: 'center',
+                y: 'bottom',
                 data: pieDateArr,
                 selected: pieDataDefaultDis
             },
@@ -138,7 +145,7 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
                 {
                     name: name,
                     type: 'pie',
-                    radius:  [30, 200],
+                    radius: [30, 150],
                     center: 'center',
                     roseType: pieType,
                     data: pieDataArr,

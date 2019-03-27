@@ -44,7 +44,9 @@ function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
             let pieTypeSel = document.getElementsByName('pieType')[pageIndex - 6];
 
             // 子数据列表改变时，触发事件
-            pieTypeSel.onchange = paintTable;
+            if (pieTypeSel) {
+                pieTypeSel.onchange = paintTable;
+            }
             mainSel.onchange = paintTable;
 
             function paintTable() {
@@ -78,7 +80,9 @@ function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                 console.log("单位：" + unit);
 
                 //获取饼状图类型
-                let pieType = getPieType(pieTypeSel, pageIndex);
+                if (pieTypeSel){
+                    var pieType = getPieType(pieTypeSel, pageIndex);
+                }
 
                 // 创建表
                 createHis(data, name, date, tableVal, unit, pageIndex, querytype, pieType);
