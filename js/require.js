@@ -11,8 +11,10 @@
 //  查询时间，字符串
 //  页面索引，数字
 function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
+    console.log(getServerIP());
+    let serverIP = getServerIP();
     $.ajax({
-        'url': 'http://192.168.0.174:5000/' + tableType + "/" + dataDate,
+        'url': 'http://' + serverIP + '/' + tableType + "/" + dataDate,
         'data': {},
         'success': function (data) {
 
@@ -80,7 +82,7 @@ function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                 console.log("单位：" + unit);
 
                 //获取饼状图类型
-                if (pieTypeSel){
+                if (pieTypeSel) {
                     var pieType = getPieType(pieTypeSel, pageIndex);
                 }
 
