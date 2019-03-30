@@ -56,8 +56,9 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
                 trigger: 'axis',
                 axisPointer: {
                     type: 'cross',
-                    crossStyle: {
-                        color: '#ffffff'
+                    crossStyle:{
+                        type:'solid',
+                        color: '#fff'
                     }
                 }
             },

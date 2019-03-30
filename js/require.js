@@ -97,9 +97,21 @@ function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                 }
                 console.log("isShowLabel: " + isShowLabel);
 
-                // 创建表
-                createHis(data, name, date, tableVal, unit, pageIndex, querytype, pieType, isShowLabel);
-                console.log("创建成功第" + curIndex + "张表");
+                // 若数据为空则报错，否则创建图表
+                let dateisNull = false;
+                let valueisNull = false;
+                if (JSON.stringify(date) === '[]') {
+                    dateisNull = true;
+                }
+                if (JSON.stringify(tableVal) === '[]') {
+                    valueisNull = true;
+                }
+                if (dateisNull && valueisNull) {
+                    document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b class='status-error'>数据库中无查询结果</b>";
+                } else {
+                    createHis(data, name, date, tableVal, unit, pageIndex, querytype, pieType, isShowLabel);
+                    console.log("创建成功第" + curIndex + "张表");
+                }
             };
         },
         'error': function () {
