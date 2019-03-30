@@ -1,21 +1,32 @@
 body {
-
-}
-
-.navbar {
-    opacity: 1;
+    background-color: #010d28;
 }
 
 .main-info-page {
-    margin: 80px auto 0;
+    margin: 60px auto 0;
     max-width: 1200px;
 }
 
 .text-center {
     text-align: center;
-    line-height: 60px;
+    line-height: 40px;
 }
 
+h3, p, b.status-ready {
+    color: #87e6fa;
+}
+
+b.status-query {
+    color: orange;
+}
+
+b.status-error {
+    color: red;
+}
+
+b.status-success {
+    color: #39ff39;
+}
 
 .selectpicker {
     height: 34px;

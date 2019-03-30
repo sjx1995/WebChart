@@ -9,7 +9,7 @@
 // 创建柱状图大表数据
 function createHistogramSel(histogramSelData, pageIndex, querytype) {
     // 初始化查询状态
-    document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b style='color: black'>请选择表和时间以查询</b>";
+    document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b class='status-ready'>请选择表和时间以查询</b>";
     // 初始化时间控件
     initTime(pageIndex);
     // 创建大表
@@ -51,7 +51,7 @@ function createHistogramSel(histogramSelData, pageIndex, querytype) {
         histogramSel.options[2].value = "n/jccll";
         histogramSel.options[3].value = "n/jccsz";
     } else {
-        document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b style='color: red'>读取报表类型出错</b>";
+        document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b class='status-error'>读取报表类型出错</b>";
     }
 
     // $.parser.parse($(".selectpicker").parent());
@@ -96,7 +96,7 @@ function createHistogramSel(histogramSelData, pageIndex, querytype) {
 
         // 查询状态显示
         let queryStatus = document.getElementsByClassName('queryStatus')[pageIndex];
-        queryStatus.innerHTML = "<b style='color: orange'>子数据读取中...</b>";
+        queryStatus.innerHTML = "<b class='status-query'>子数据读取中...</b>";
         document.getElementsByName('tableName')[pageIndex].innerHTML = "";
         document.getElementsByName('tableName')[pageIndex].innerHTML = "<option>查询中...</option>";
         document.getElementsByName('tableName')[pageIndex].disabled = true;
@@ -106,7 +106,7 @@ function createHistogramSel(histogramSelData, pageIndex, querytype) {
         if (dataDate && tableType) {
             ajaxHistogram(dataDate, tableType, pageIndex, querytype);
         } else {
-            document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b style='color: red'>查询条件不足</b>";
+            document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b class='status-error'>查询条件不足</b>";
         }
     };
 }

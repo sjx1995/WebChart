@@ -18,11 +18,14 @@
 //  页面索引（数字）
 //  子数据名（字符串）
 //  饼状图类型（字符串||null）
-function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pieType) {
+//  柱状图、线形图是否显示数值（布尔）
+function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pieType, isShowLabel) {
     var myChart = echarts.init(document.getElementsByClassName('Histogram')[pageIndex], 'walden');
     var tableSubtext = document.getElementsByTagName("h3")[pageIndex].innerText;
 
     var option = null;
+
+    console.log("isShowLabel: " + isShowLabel);
 
     // 根据页面索引判断单位
     let xUnit = null;
@@ -40,7 +43,13 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
             title: {
                 text: name,
                 subtext: tableSubtext,
-                x: 'center'
+                x: 'center',
+                textStyle: {
+                    color: '#87e6fa'
+                },
+                subtextStyle: {
+                    color: '#87e6fa'
+                }
             },
             color: ['#3398DB'],
             tooltip: {
@@ -48,7 +57,7 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
                 axisPointer: {
                     type: 'cross',
                     crossStyle: {
-                        color: '#000000'
+                        color: '#ffffff'
                     }
                 }
             },
@@ -64,15 +73,44 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
             },
             xAxis: {
                 name: xUnit,
-                data: date
+                data: date,
+                // axisLine: {
+                //     onZero: false,
+                //     lineStyle: {
+                //         color: ['#f00']
+                //     }
+                // },
+                splitLine: {
+                    lineStyle: {
+                        color: ['rgba(50,50,50,0.7)'],
+                        type: 'dashed'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#6e81ff'
+                    }
+                }
             },
             yAxis: {
                 name: unit,
                 min: function (data) {
-                    return data.min - data.min * 0.15;
+                    return (data.min * 0.85).toFixed(4);
                 },
                 max: function (data) {
-                    return data.max + data.max * 0.15;
+                    return (data.max * 1.15).toFixed(4);
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: ['rgba(50,50,50,0.7)'],
+                        type:
+                            'dashed'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#6e81ff'
+                    }
                 }
             },
             series: [
@@ -80,6 +118,12 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
                     name: name,
                     type: querytype,
                     data: tableValue,
+                    label: {
+                        normal: {
+                            show: isShowLabel,
+                            position: 'top'
+                        }
+                    },
                     // 平均值
                     // markLine: {
                     //     data: [
@@ -89,13 +133,30 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
                     animationDelay: function (idx) {
                         return idx * 10 + 100;
                     },
+                    areaStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: '#89cbdb'
+                            }, {
+                                offset: 1,
+                                color: '#010a18'
+                            }])
+                        }
+                    },
                 }
             ],
-            animationEasing: 'elasticOut',
-            animationDelayUpdate: function (idx) {
-                return idx * 5;
-            },
-        };
+            animationEasing:
+                'elasticOut',
+            animationDelayUpdate:
+
+                function (idx) {
+                    return idx * 5;
+                }
+
+            ,
+        }
+        ;
     } else if (querytype === 'pie') {
         // 设定数据
         let pieDataArr = [];
@@ -176,4 +237,14 @@ function getPieType(pieTypeSel, pageIndex) {
     }
     return pieType;
 
+}
+
+
+// 获取柱状图、折线图是否显示数字
+function ShowLabel(showLabelSel, pageIndex) {
+    let showLabel = true;
+    if (showLabelSel.value === 1 || showLabelSel.value === '1') {
+        showLabel=false;
+    }
+    return showLabel;
 }

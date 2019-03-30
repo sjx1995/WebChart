@@ -1,4 +1,4 @@
-
+﻿
 test.html
 .idea/workspace.xml
 .idea/WebChart.iml
@@ -7,3 +7,6 @@ test.html
 .idea/misc.xml
 .idea/encodings.xml
 .idea/dictionaries/Sunly.xml
+jquery.js
+部署版本/
+js/serverIP.js

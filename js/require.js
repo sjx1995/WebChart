@@ -27,10 +27,10 @@ function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
 
             // 显示查询状态
             if (data.code === 'success') {
-                document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b style='color:green;'>子数据查询成功</b>";
+                document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b class='status-success' '>子数据查询成功</b>";
                 document.getElementsByName('tableName')[pageIndex].disabled = false;
             } else {
-                document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b style='color:red;'>查询出错，请联系管理员。</b><br>错误代码：" + data.code;
+                document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b class='status-error'>查询出错，请联系管理员。</b><br>错误代码：" + data.code;
             }
 
             // 将子数据表名保存在数组中
@@ -42,12 +42,17 @@ function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
 
             // 创建子数据列表
             let mainSel = createHisLi(nameArr, pageIndex);
-
+            // 获取饼状图类型
             let pieTypeSel = document.getElementsByName('pieType')[pageIndex - 6];
+            // 获取柱状图折线图显示数字
+            let showLabelSel = document.getElementsByName('showLabel')[pageIndex];
 
             // 子数据列表改变时，触发事件
             if (pieTypeSel) {
                 pieTypeSel.onchange = paintTable;
+            }
+            if (showLabelSel) {
+                showLabelSel.onchange = paintTable;
             }
             mainSel.onchange = paintTable;
 
@@ -86,14 +91,20 @@ function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                     var pieType = getPieType(pieTypeSel, pageIndex);
                 }
 
+                // 获取柱状图、折线图是否显示数值
+                if (showLabelSel) {
+                    var isShowLabel = ShowLabel(showLabelSel, pageIndex);
+                }
+                console.log("isShowLabel: " + isShowLabel);
+
                 // 创建表
-                createHis(data, name, date, tableVal, unit, pageIndex, querytype, pieType);
+                createHis(data, name, date, tableVal, unit, pageIndex, querytype, pieType, isShowLabel);
                 console.log("创建成功第" + curIndex + "张表");
             };
         },
         'error': function () {
             // 错误提示
-            document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b style='color: red'>子数据读取失败</b>";
+            document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b class='status-error'>子数据读取失败</b>";
         },
         'type': 'get',
         'dataType': 'json'

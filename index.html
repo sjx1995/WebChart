@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <!--时间控件-->
     <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -110,9 +111,14 @@
                             <option>==请先选择表类型及时间==</option>
                         </select>
                     </div>
-                    <div class="col-md-7 col-sm-7">
-                        <p class="queryP">查询状态：<span id="queryStatus" class="queryStatus"><b
-                                style='color: black'>请选择表和时间以查询</b></span></p>
+                    <div class="col-md-3 col-sm-3">
+                        <select class="selectpicker" name="showLabel" id="showLabel">
+                            <option value="0">显示数值</option>
+                            <option value="1">不显示数值</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <p class="queryP">查询状态：<span id="queryStatus" class="queryStatus"><b class="status-ready">请选择表和时间以查询</b></span></p>
                     </div>
                 </div>
             </div>
@@ -150,9 +156,14 @@
                             <option>==请先选择表类型及时间==</option>
                         </select>
                     </div>
-                    <div class="col-md-7 col-sm-7">
-                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_1"><b
-                                style='color: black'>请选择表和时间以查询</b></span></p>
+                    <div class="col-md-3 col-sm-3">
+                        <select class="selectpicker" name="showLabel" id="showLabel1">
+                            <option value="0">显示数值</option>
+                            <option value="1">不显示数值</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_1"><b class="status-ready">请选择表和时间以查询</b></span></p>
                     </div>
                 </div>
             </div>
@@ -189,9 +200,14 @@
                             <option>==请先选择表类型及时间==</option>
                         </select>
                     </div>
-                    <div class="col-md-7 col-sm-7">
-                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_2"><b
-                                style='color: black'>请选择表和时间以查询</b></span></p>
+                    <div class="col-md-3 col-sm-3">
+                        <select class="selectpicker" name="showLabel" id="showLabel2">
+                            <option value="0">显示数值</option>
+                            <option value="1">不显示数值</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_2"><b class="status-ready">请选择表和时间以查询</b></span></p>
                     </div>
                 </div>
             </div>
@@ -229,9 +245,14 @@
                             <option>==请先选择表类型及时间==</option>
                         </select>
                     </div>
-                    <div class="col-md-7 col-sm-7">
-                        <p class="queryP">查询状态：<span id="queryStatus_3" class="queryStatus"><b
-                                style='color: black'>请选择表和时间以查询</b></span></p>
+                    <div class="col-md-3 col-sm-3">
+                        <select class="selectpicker" name="showLabel" id="showLabel3">
+                            <option value="0">显示数值</option>
+                            <option value="1">不显示数值</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <p class="queryP">查询状态：<span id="queryStatus_3" class="queryStatus"><b class="status-ready">请选择表和时间以查询</b></span></p>
                     </div>
                 </div>
             </div>
@@ -269,9 +290,14 @@
                             <option>==请先选择表类型及时间==</option>
                         </select>
                     </div>
-                    <div class="col-md-7 col-sm-7">
-                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_4"><b
-                                style='color: black'>请选择表和时间以查询</b></span></p>
+                    <div class="col-md-3 col-sm-3">
+                        <select class="selectpicker" name="showLabel" id="showLabel4">
+                            <option value="0">显示数值</option>
+                            <option value="1">不显示数值</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_4"><b class="status-ready">请选择表和时间以查询</b></span></p>
                     </div>
                 </div>
             </div>
@@ -308,9 +334,14 @@
                             <option>==请先选择表类型及时间==</option>
                         </select>
                     </div>
-                    <div class="col-md-7 col-sm-7">
-                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_5"><b
-                                style='color: black'>请选择表和时间以查询</b></span></p>
+                    <div class="col-md-3 col-sm-3">
+                        <select class="selectpicker" name="showLabel" id="showLabel5">
+                            <option value="0">显示数值</option>
+                            <option value="1">不显示数值</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_5"><b class="status-ready">请选择表和时间以查询</b></span></p>
                     </div>
                 </div>
             </div>
@@ -355,8 +386,7 @@
                         </select>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <p class="queryP">查询状态：<span id="queryStatus_6" class="queryStatus"><b
-                                style='color: black'>请选择表和时间以查询</b></span></p>
+                        <p class="queryP">查询状态：<span id="queryStatus_6" class="queryStatus"><b class="status-ready">请选择表和时间以查询</b></span></p>
                     </div>
                 </div>
             </div>
@@ -401,8 +431,7 @@
                         </select>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_7"><b
-                                style='color: black'>请选择表和时间以查询</b></span></p>
+                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_7"><b class="status-ready">请选择表和时间以查询</b></span></p>
                     </div>
                 </div>
             </div>
@@ -446,8 +475,7 @@
                         </select>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_8"><b
-                                style='color: black'>请选择表和时间以查询</b></span></p>
+                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_8"><b class="status-ready">请选择表和时间以查询</b></span></p>
                     </div>
                 </div>
             </div>

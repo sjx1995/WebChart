@@ -60,7 +60,7 @@ function createYearSel() {
 // 初始化查询状态
 function initQueryStatus(pageIndex) {
     let queryStatus = document.getElementsByClassName('queryStatus')[pageIndex];
-    queryStatus.innerHTML = "<b style='color: orange'>请选择表和时间以查询</b>";
+    queryStatus.innerHTML = "<b class='status-query'>请选择表和时间以查询</b>";
     document.getElementsByName('tableName')[pageIndex].innerHTML = "";
     document.getElementsByName('tableName')[pageIndex].innerHTML = "<option>请先选择表类型及时间</option>";
     document.getElementsByName('tableName')[pageIndex].disabled = true;
