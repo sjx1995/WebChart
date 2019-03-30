@@ -57,6 +57,24 @@
                         <li><a href="#tabPie3" data-toggle="tab" onclick="queryYearPie()">年报表</a></li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">柱状图数据比较</a>
+                    <ul class="dropdown-menu" id="dropdownTable3">
+                        <li><a href="#comHis1" data-toggle="tab" onclick="compareDayHistogram();">日报表</a></li>
+                        <li><a href="#comHis2" data-toggle="tab" onclick="compareMonthHistogram()">月报表</a></li>
+                        <li><a href="#comHis3" data-toggle="tab" onclick="compareYearHistogram()">年报表</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">折现图数据比较</a>
+                    <ul class="dropdown-menu" id="dropdownTable4">
+                        <li><a href="#comLine1" data-toggle="tab" onclick="compareDayLine();">日报表</a></li>
+                        <li><a href="#comLine2" data-toggle="tab" onclick="compareMonthLine()">月报表</a></li>
+                        <li><a href="#comLine3" data-toggle="tab" onclick="compareYearLine()">年报表</a></li>
+                    </ul>
+                </li>
                 <!--<li><a href="#tabChart" data-toggle="tab">表格</a> </li>-->
             </ul>
         </div>
@@ -118,7 +136,8 @@
                         </select>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <p class="queryP">查询状态：<span id="queryStatus" class="queryStatus"><b class="status-ready">请选择表和时间以查询</b></span></p>
+                        <p class="queryP">查询状态：<span id="queryStatus" class="queryStatus"><b class="status-ready">请选择表和时间以查询</b></span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -163,7 +182,8 @@
                         </select>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_1"><b class="status-ready">请选择表和时间以查询</b></span></p>
+                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_1"><b class="status-ready">请选择表和时间以查询</b></span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -207,7 +227,8 @@
                         </select>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_2"><b class="status-ready">请选择表和时间以查询</b></span></p>
+                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_2"><b class="status-ready">请选择表和时间以查询</b></span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -252,7 +273,8 @@
                         </select>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <p class="queryP">查询状态：<span id="queryStatus_3" class="queryStatus"><b class="status-ready">请选择表和时间以查询</b></span></p>
+                        <p class="queryP">查询状态：<span id="queryStatus_3" class="queryStatus"><b class="status-ready">请选择表和时间以查询</b></span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -297,7 +319,8 @@
                         </select>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_4"><b class="status-ready">请选择表和时间以查询</b></span></p>
+                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_4"><b class="status-ready">请选择表和时间以查询</b></span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -341,7 +364,8 @@
                         </select>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_5"><b class="status-ready">请选择表和时间以查询</b></span></p>
+                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_5"><b class="status-ready">请选择表和时间以查询</b></span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -386,7 +410,8 @@
                         </select>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <p class="queryP">查询状态：<span id="queryStatus_6" class="queryStatus"><b class="status-ready">请选择表和时间以查询</b></span></p>
+                        <p class="queryP">查询状态：<span id="queryStatus_6" class="queryStatus"><b class="status-ready">请选择表和时间以查询</b></span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -431,7 +456,8 @@
                         </select>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_7"><b class="status-ready">请选择表和时间以查询</b></span></p>
+                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_7"><b class="status-ready">请选择表和时间以查询</b></span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -475,12 +501,72 @@
                         </select>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_8"><b class="status-ready">请选择表和时间以查询</b></span></p>
+                        <p class="queryP">查询状态：<span class="queryStatus" id="queryStatus_8"><b class="status-ready">请选择表和时间以查询</b></span>
+                        </p>
                     </div>
                 </div>
             </div>
             <div id="Histogram_8" class="Histogram"></div>
 
+        </div>
+    </div>
+    <div class="tab-pane fade" id="comHis1">
+        <div class="main-info-page">
+            <h3 class="text-center">日报表 - 比较柱状图</h3>
+            <div class="container-fluid">
+                <div class="row form-inline form-group">
+                    <div class="date-form-group col-sm-6 form-group">
+                        <!--时间选择-->
+                        <div class="input-group date form_date col-md-5 day_sel" data-date=""
+                             data-date-format="yyyy MM dd"
+                             data-link-field="dtp_input2" data-link-format="yyyy MM dd">
+                            <input class="form-control" size="16" type="text" value="" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <!--表选择-->
+                        <select class="selectpicker" name="bigTable" id="bigTable_9"></select>
+                    </div>
+                </div>
+
+                <div class="row form-inline form-group">
+                    <div class="col-sm-6">
+                        <p class="queryP">查询状态：
+                            <span class="queryStatus" id="queryStatus_9"><b class="status-ready">请选择表和时间以查询</b></span>
+                        </p>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="查询" class="query btn btn-primary btn-block">查询</button>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="查询" class="com-add btn btn-primary btn-block">添加比较项</button>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="查询" class="com-draw btn btn-primary btn-block">生成表格</button>
+                    </div>
+                </div>
+                <div class="row row-com">
+                    <div class="col-sm-6 form-group">
+                        <!--表选择-->
+                        <select class="selectpicker comMainSel comDayHis" name="tableName">
+                            <option>==请先选择表类型及时间==</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <!--表选择-->
+                        <select class="selectpicker comMainSel comDayHis" name="tableName">
+                            <option>==请先选择表类型及时间==</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="Histogram_9" class="Histogram"></div>
+
+            </div>
         </div>
     </div>
     <!--<div class="tab-pane fade" id="tabChart">-->
@@ -616,14 +702,19 @@
 <!--导入图表数据-->
 <!--<script src="./js/chartNum.js"></script>-->
 <!--引入柱状图-->
-<script src="js/init.js"></script>
-<script src="js/trigger.js"></script>
-<script src="js/createSel.js"></script>
-<script src="js/require.js"></script>
+<script src="js/que_init.js"></script>
+<script src="js/que_trigger.js"></script>
+<script src="js/que_createSel.js"></script>
+<script src="js/que_require.js"></script>
+<script src="js/que_createTable.js"></script>
+
 <script src="js/serverIP.js"></script>
 <script src="js/echarts.theme.js"></script>
-<script src="js/createTable.js"></script>
 
+<script src="js/com_elements.js"></script>
+<script src="js/com_require.js"></script>
+<script src="js/com_init.js"></script>
+<script src="js/com_createTable.js"></script>
 
 </body>
 </html>

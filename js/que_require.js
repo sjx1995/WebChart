@@ -42,6 +42,7 @@ function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
 
             // 创建子数据列表
             let mainSel = createHisLi(nameArr, pageIndex);
+
             // 获取饼状图类型
             let pieTypeSel = document.getElementsByName('pieType')[pageIndex - 6];
             // 获取柱状图折线图显示数字

@@ -56,8 +56,8 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
                 trigger: 'axis',
                 axisPointer: {
                     type: 'cross',
-                    crossStyle:{
-                        type:'solid',
+                    crossStyle: {
+                        type: 'solid',
                         color: '#fff'
                     }
                 }
@@ -125,6 +125,7 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
                             position: 'top'
                         }
                     },
+                    smooth: true,
                     // 平均值
                     // markLine: {
                     //     data: [
@@ -147,17 +148,13 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
                     },
                 }
             ],
-            animationEasing:
-                'elasticOut',
+            animationEasing: 'elasticOut',
             animationDelayUpdate:
 
                 function (idx) {
                     return idx * 5;
-                }
-
-            ,
-        }
-        ;
+                },
+        };
     } else if (querytype === 'pie') {
         // 设定数据
         let pieDataArr = [];
@@ -245,7 +242,7 @@ function getPieType(pieTypeSel, pageIndex) {
 function ShowLabel(showLabelSel, pageIndex) {
     let showLabel = true;
     if (showLabelSel.value === 1 || showLabelSel.value === '1') {
-        showLabel=false;
+        showLabel = false;
     }
     return showLabel;
 }

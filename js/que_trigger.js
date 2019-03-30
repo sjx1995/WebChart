@@ -21,8 +21,8 @@
 * */
 let daySelData = [
     '==请选择查看日报表的类型==',
-    '滤池报表一',
     '中控室报表一',
+    '滤池报表一',
     'PAC投加系统报表',
     '进出厂流量报表一',
     '进出厂水质报表一',
@@ -138,5 +138,33 @@ function queryYearPie() {
     let pageIndex = 8;
     console.log("年报表，当前在第" + pageIndex + "个页面，大表数据：" + yearHistogramSelData);
     let querytype = 'pie';
+    createHistogramSel(yearHistogramSelData, pageIndex, querytype);
+}
+
+// 比较柱状图
+function compareDayHistogram() {
+    let dayHistogramSelData = daySelData;
+    // 设定元素在页面数组中的位置
+    let pageIndex = 9;
+    console.log("日报表，当前在第" + pageIndex + "个页面，比较数据，大表数据：" + dayHistogramSelData);
+    let querytype = 'bar';
+    createHistogramSel(dayHistogramSelData, pageIndex, querytype);
+}
+
+function compareMonthHistogram() {
+    let monthHistogramSelData = monthSelData;
+    // 设定元素在页面数组中的位置
+    let pageIndex = 10;
+    console.log("月报表，当前在第" + pageIndex + "个页面，比较数据，大表数据：" + monthHistogramSelData);
+    let querytype = 'bar';
+    createHistogramSel(monthHistogramSelData, pageIndex, querytype);
+}
+
+function compareYearHistogram() {
+    let yearHistogramSelData = yearSelData;
+    // 设定元素在页面数组中的位置
+    let pageIndex = 11;
+    console.log("年报表，当前在第" + pageIndex + "个页面，比较数据，大表数据：" + yearHistogramSelData);
+    let querytype = 'bar';
     createHistogramSel(yearHistogramSelData, pageIndex, querytype);
 }

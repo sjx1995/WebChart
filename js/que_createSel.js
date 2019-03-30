@@ -32,8 +32,8 @@ function createHistogramSel(histogramSelData, pageIndex, querytype) {
     // 判断大表类型，添加索引
     if (histogramSel.options[0].innerText.indexOf('日报表') >= 0) {
         histogramSel.options[0].value = "";
-        histogramSel.options[1].value = "r/lvchi";
         histogramSel.options[2].value = "r/zks";
+        histogramSel.options[1].value = "r/lvchi";
         histogramSel.options[3].value = "r/pac";
         histogramSel.options[4].value = "r/jccll";
         histogramSel.options[5].value = "r/jccsz";
@@ -86,7 +86,7 @@ function createHistogramSel(histogramSelData, pageIndex, querytype) {
         } else if (dataDate.indexOf("十二月") >= 0) {
             dataDate = dataDate.replace(" 十二月", "-12");
         }
-        if (pageIndex === 0 || pageIndex === 3 || pageIndex === 6) {
+        if (pageIndex === 0 || pageIndex === 3 || pageIndex === 6 || pageIndex === 9 || pageIndex === 12) {
             dataDate = dataDate.replace(" ", "-");
         }
         console.log("查询时间：" + dataDate);
@@ -104,7 +104,11 @@ function createHistogramSel(histogramSelData, pageIndex, querytype) {
         // 向服务器请求子数据
         // 判断减少无效请求
         if (dataDate && tableType) {
-            ajaxHistogram(dataDate, tableType, pageIndex, querytype);
+            if (pageIndex >= 0 && pageIndex <= 8) {
+                ajaxHistogram(dataDate, tableType, pageIndex, querytype);
+            } else {
+                com_ajaxHistogram(dataDate, tableType, pageIndex, querytype);
+            }
         } else {
             document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b class='status-error'>查询条件不足</b>";
         }
