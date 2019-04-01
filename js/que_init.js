@@ -8,11 +8,11 @@
 
 // 初始化时间控件
 function initTime(pageIndex) {
-    if (pageIndex === 0 || pageIndex === 3 || pageIndex === 6 || pageIndex === 9) {
+    if (pageIndex === 0 || pageIndex === 3 || pageIndex === 6 || pageIndex === 9 || pageIndex === 12) {
         createDaySel();
-    } else if (pageIndex === 1 || pageIndex === 4 || pageIndex === 7 || pageIndex === 10) {
+    } else if (pageIndex === 1 || pageIndex === 4 || pageIndex === 7 || pageIndex === 10 || pageIndex === 13) {
         createMonthSel();
-    } else if (pageIndex === 2 || pageIndex === 5 || pageIndex === 8 || pageIndex === 11) {
+    } else if (pageIndex === 2 || pageIndex === 5 || pageIndex === 8 || pageIndex === 11 || pageIndex === 14) {
         createYearSel();
     }
     console.log("时间初始化完成");
@@ -61,7 +61,11 @@ function createYearSel() {
 function initQueryStatus(pageIndex) {
     let queryStatus = document.getElementsByClassName('queryStatus')[pageIndex];
     queryStatus.innerHTML = "<b class='status-query'>请选择表和时间以查询</b>";
-    document.getElementsByName('tableName')[pageIndex].innerHTML = "";
-    document.getElementsByName('tableName')[pageIndex].innerHTML = "<option>请先选择表类型及时间</option>";
-    document.getElementsByName('tableName')[pageIndex].disabled = true;
+
+    let tableEle = document.getElementsByName('tableName')[pageIndex];
+    if (tableEle) {
+        tableEle.innerHTML = "";
+        tableEle.innerHTML = "<option>请先选择表类型及时间</option>";
+        tableEle.disabled = true;
+    }
 }

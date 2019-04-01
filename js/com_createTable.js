@@ -17,13 +17,27 @@
 //  子数据名（字符串）
 //  饼状图类型（字符串||null）
 //  柱状图、线形图是否显示数值（布尔）
-function com_createHis(data, com_name, com_date, com_tableVal, com_unit, pageIndex, querytype, seriesVal) {
+function com_createHis(data, comNameArr, com_date, com_tableVal, com_unit, pageIndex, querytype, seriesVal, dataDate) {
+//     console.log("生成新表格中...");
+//     console.log("=============");
+//     console.log(com_name);
+//     console.log("=============");
+//     console.log(com_date);
+//     console.log("=============");
+//     console.log(com_unit);
+//     console.log("=============");
+//     console.log(pageIndex);
+//     console.log("=============");
+//     console.log(querytype);
+//     console.log("=============");
+//     console.log(seriesVal);
+//     console.log("=============");
     var myChart = echarts.init(document.getElementsByClassName('Histogram')[pageIndex], 'walden');
     var tableSubtext = document.getElementsByTagName("h3")[pageIndex].innerText;
 
     var option = null;
 
-    // 根据页面索引判断单位
+// 根据页面索引判断单位
     let xUnit = null;
     if (pageIndex === 0 || pageIndex === 3 || pageIndex === 6 || pageIndex === 9 || pageIndex === 12) {
         xUnit = "时";
@@ -33,11 +47,11 @@ function com_createHis(data, com_name, com_date, com_tableVal, com_unit, pageInd
         xUnit = "月";
     }
 
-    // 柱状图、折线图默认样式
+// 柱状图、折线图默认样式
     option = {
         title: {
-            text: name,
-            subtext: tableSubtext,
+            text: getWaterPlantName() + " " + tableSubtext,
+            subtext: dataDate + " " + comNameArr,
             x: 'center',
             textStyle: {
                 color: '#87e6fa'
@@ -46,7 +60,11 @@ function com_createHis(data, com_name, com_date, com_tableVal, com_unit, pageInd
                 color: '#87e6fa'
             }
         },
-        color: ['#3398DB'],
+        legend: {
+            x: 'center',
+            y: 'bottom',
+            data: comNameArr
+        },
         tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -116,6 +134,6 @@ function com_createHis(data, com_name, com_date, com_tableVal, com_unit, pageInd
         },
     };
 
-    // 使用刚指定的配置项和数据显示图表。
+// 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
 }

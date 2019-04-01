@@ -97,9 +97,13 @@ function createHistogramSel(histogramSelData, pageIndex, querytype) {
         // 查询状态显示
         let queryStatus = document.getElementsByClassName('queryStatus')[pageIndex];
         queryStatus.innerHTML = "<b class='status-query'>子数据读取中...</b>";
-        document.getElementsByName('tableName')[pageIndex].innerHTML = "";
-        document.getElementsByName('tableName')[pageIndex].innerHTML = "<option>查询中...</option>";
-        document.getElementsByName('tableName')[pageIndex].disabled = true;
+        let tableEle = document.getElementsByName('tableName')[pageIndex];
+        if (tableEle && pageIndex < 9) {
+            tableEle.innerHTML = "";
+            tableEle.innerHTML = "<option>查询中...</option>";
+            tableEle.disabled = true;
+        }
+
 
         // 向服务器请求子数据
         // 判断减少无效请求

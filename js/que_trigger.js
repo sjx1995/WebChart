@@ -168,3 +168,31 @@ function compareYearHistogram() {
     let querytype = 'bar';
     createHistogramSel(yearHistogramSelData, pageIndex, querytype);
 }
+
+// 比较折现图
+function compareDayLine() {
+    let dayHistogramSelData = daySelData;
+    // 设定元素在页面数组中的位置
+    let pageIndex = 12;
+    console.log("日报表，当前在第" + pageIndex + "个页面，比较数据，大表数据：" + dayHistogramSelData);
+    let querytype = 'line';
+    createHistogramSel(dayHistogramSelData, pageIndex, querytype);
+}
+
+function compareMonthLine() {
+    let monthHistogramSelData = monthSelData;
+    // 设定元素在页面数组中的位置
+    let pageIndex = 13;
+    console.log("月报表，当前在第" + pageIndex + "个页面，比较数据，大表数据：" + monthHistogramSelData);
+    let querytype = 'line';
+    createHistogramSel(monthHistogramSelData, pageIndex, querytype);
+}
+
+function compareYearLine() {
+    let yearHistogramSelData = yearSelData;
+    // 设定元素在页面数组中的位置
+    let pageIndex = 14;
+    console.log("年报表，当前在第" + pageIndex + "个页面，比较数据，大表数据：" + yearHistogramSelData);
+    let querytype = 'line';
+    createHistogramSel(yearHistogramSelData, pageIndex, querytype);
+}

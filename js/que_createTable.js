@@ -19,7 +19,7 @@
 //  子数据名（字符串）
 //  饼状图类型（字符串||null）
 //  柱状图、线形图是否显示数值（布尔）
-function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pieType, isShowLabel) {
+function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pieType, isShowLabel, dataDate) {
     var myChart = echarts.init(document.getElementsByClassName('Histogram')[pageIndex], 'walden');
     var tableSubtext = document.getElementsByTagName("h3")[pageIndex].innerText;
 
@@ -41,8 +41,8 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
     if (querytype === 'bar' || querytype === 'line') {
         option = {
             title: {
-                text: name,
-                subtext: tableSubtext,
+                text: getWaterPlantName() + " " + tableSubtext,
+                subtext: dataDate + " " + name,
                 x: 'center',
                 textStyle: {
                     color: '#87e6fa'
@@ -179,8 +179,8 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
 
         option = {
             title: {
-                text: name,
-                subtext: tableSubtext,
+                text: getWaterPlantName() + " " + tableSubtext,
+                subtext: dataDate + " " + name,
                 x: 'center'
             },
             tooltip: {

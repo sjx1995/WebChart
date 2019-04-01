@@ -512,14 +512,14 @@
     </div>
     <div class="tab-pane fade" id="comHis1">
         <div class="main-info-page">
-            <h3 class="text-center">日报表 - 比较柱状图</h3>
+            <h3 class="text-center">日报表 - 柱状比较图</h3>
             <div class="container-fluid">
                 <div class="row form-inline form-group">
                     <div class="date-form-group col-sm-6 form-group">
                         <!--时间选择-->
                         <div class="input-group date form_date col-md-5 day_sel" data-date=""
                              data-date-format="yyyy MM dd"
-                             data-link-field="dtp_input2" data-link-format="yyyy MM dd">
+                             data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
                             <input class="form-control" size="16" type="text" value="" readonly>
                             <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -531,11 +531,17 @@
                     </div>
                 </div>
 
-                <div class="row form-inline form-group">
-                    <div class="col-sm-6">
+                <div class="row form-inline form-group last-form-group">
+                    <div class="col-sm-3 form-group">
                         <p class="queryP">查询状态：
                             <span class="queryStatus" id="queryStatus_9"><b class="status-ready">请选择表和时间以查询</b></span>
                         </p>
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <select class="selectpicker" name="showLabel" id="showLabel6">
+                            <option value="0">显示数值</option>
+                            <option value="1">不显示数值</option>
+                        </select>
                     </div>
                     <div class="col-sm-2 form-group">
                         <!--查询按钮-->
@@ -543,28 +549,275 @@
                     </div>
                     <div class="col-sm-2 form-group">
                         <!--查询按钮-->
-                        <button type="button" value="查询" class="com-add btn btn-primary btn-block">添加比较项</button>
+                        <button type="button" value="添加比较项" class="com-add btn btn-primary btn-block">添加比较项</button>
                     </div>
                     <div class="col-sm-2 form-group">
                         <!--查询按钮-->
-                        <button type="button" value="查询" class="com-draw btn btn-primary btn-block">生成表格</button>
+                        <button type="button" value="生成表格" class="com-draw btn btn-primary btn-block">生成表格</button>
                     </div>
                 </div>
-                <div class="row row-com">
-                    <div class="col-sm-6 form-group">
-                        <!--表选择-->
-                        <select class="selectpicker comMainSel comDayHis" name="tableName">
-                            <option>==请先选择表类型及时间==</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-6 form-group">
-                        <!--表选择-->
-                        <select class="selectpicker comMainSel comDayHis" name="tableName">
-                            <option>==请先选择表类型及时间==</option>
-                        </select>
-                    </div>
-                </div>
+                <div class="row row-com"></div>
                 <div id="Histogram_9" class="Histogram"></div>
+
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="comHis2">
+        <div class="main-info-page">
+            <h3 class="text-center">月报表 - 柱状比较图</h3>
+            <div class="container-fluid">
+                <div class="row form-inline form-group">
+                    <div class="date-form-group col-sm-6 form-group">
+                        <!--时间选择-->
+                        <div class="input-group date form_date col-md-5 month_sel" data-date=""
+                             data-date-format="yyyy MM"
+                             data-link-field="dtp_input2" data-link-format="yyyy-mm">
+                            <input class="form-control" size="16" type="text" value="" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <!--表选择-->
+                        <select class="selectpicker" name="bigTable" id="bigTable_10"></select>
+                    </div>
+                </div>
+
+                <div class="row form-inline form-group last-form-group">
+                    <div class="col-sm-3 form-group">
+                        <p class="queryP">查询状态：
+                            <span class="queryStatus" id="queryStatus_10"><b class="status-ready">请选择表和时间以查询</b></span>
+                        </p>
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <select class="selectpicker" name="showLabel" id="showLabel7">
+                            <option value="0">显示数值</option>
+                            <option value="1">不显示数值</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="查询" class="query btn btn-primary btn-block">查询</button>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="添加比较项" class="com-add btn btn-primary btn-block">添加比较项</button>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="生成表格" class="com-draw btn btn-primary btn-block">生成表格</button>
+                    </div>
+                </div>
+                <div class="row row-com"></div>
+                <div id="Histogram_10" class="Histogram"></div>
+
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="comHis3">
+        <div class="main-info-page">
+            <h3 class="text-center">年报表 - 柱状比较图</h3>
+            <div class="container-fluid">
+                <div class="row form-inline form-group">
+                    <div class="date-form-group col-sm-6 form-group">
+                        <!--时间选择-->
+                        <div class="input-group date form_date col-md-5 year_sel" data-date=""
+                             data-date-format="yyyy"
+                             data-link-field="dtp_input2" data-link-format="yyyy">
+                            <input class="form-control" size="16" type="text" value="" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <!--表选择-->
+                        <select class="selectpicker" name="bigTable" id="bigTable_11"></select>
+                    </div>
+                </div>
+
+                <div class="row form-inline form-group last-form-group">
+                    <div class="col-sm-3 form-group">
+                        <p class="queryP">查询状态：
+                            <span class="queryStatus" id="queryStatus_11"><b class="status-ready">请选择表和时间以查询</b></span>
+                        </p>
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <select class="selectpicker" name="showLabel" id="showLabel8">
+                            <option value="0">显示数值</option>
+                            <option value="1">不显示数值</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="查询" class="query btn btn-primary btn-block">查询</button>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="添加比较项" class="com-add btn btn-primary btn-block">添加比较项</button>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="生成表格" class="com-draw btn btn-primary btn-block">生成表格</button>
+                    </div>
+                </div>
+                <div class="row row-com"></div>
+                <div id="Histogram_11" class="Histogram"></div>
+
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="comLine1">
+        <div class="main-info-page">
+            <h3 class="text-center">日报表 - 折线比较图</h3>
+            <div class="container-fluid">
+                <div class="row form-inline form-group">
+                    <div class="date-form-group col-sm-6 form-group">
+                        <!--时间选择-->
+                        <div class="input-group date form_date col-md-5 day_sel" data-date=""
+                             data-date-format="yyyy MM dd"
+                             data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            <input class="form-control" size="16" type="text" value="" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <!--表选择-->
+                        <select class="selectpicker" name="bigTable" id="bigTable_12"></select>
+                    </div>
+                </div>
+
+                <div class="row form-inline form-group last-form-group">
+                    <div class="col-sm-3 form-group">
+                        <p class="queryP">查询状态：
+                            <span class="queryStatus" id="queryStatus_12"><b class="status-ready">请选择表和时间以查询</b></span>
+                        </p>
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <select class="selectpicker" name="showLabel" id="showLabel9">
+                            <option value="0">显示数值</option>
+                            <option value="1">不显示数值</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="查询" class="query btn btn-primary btn-block">查询</button>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="添加比较项" class="com-add btn btn-primary btn-block">添加比较项</button>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="生成表格" class="com-draw btn btn-primary btn-block">生成表格</button>
+                    </div>
+                </div>
+                <div class="row row-com"></div>
+                <div id="Histogram_12" class="Histogram"></div>
+
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="comLine2">
+        <div class="main-info-page">
+            <h3 class="text-center">月报表 - 折线比较图</h3>
+            <div class="container-fluid">
+                <div class="row form-inline form-group">
+                    <div class="date-form-group col-sm-6 form-group">
+                        <!--时间选择-->
+                        <div class="input-group date form_date col-md-5 month_sel" data-date=""
+                             data-date-format="yyyy MM"
+                             data-link-field="dtp_input2" data-link-format="yyyy-mm">
+                            <input class="form-control" size="16" type="text" value="" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <!--表选择-->
+                        <select class="selectpicker" name="bigTable" id="bigTable_13"></select>
+                    </div>
+                </div>
+
+                <div class="row form-inline form-group last-form-group">
+                    <div class="col-sm-3 form-group">
+                        <p class="queryP">查询状态：
+                            <span class="queryStatus" id="queryStatus_13"><b class="status-ready">请选择表和时间以查询</b></span>
+                        </p>
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <select class="selectpicker" name="showLabel" id="showLabel10">
+                            <option value="0">显示数值</option>
+                            <option value="1">不显示数值</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="查询" class="query btn btn-primary btn-block">查询</button>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="添加比较项" class="com-add btn btn-primary btn-block">添加比较项</button>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="生成表格" class="com-draw btn btn-primary btn-block">生成表格</button>
+                    </div>
+                </div>
+                <div class="row row-com"></div>
+                <div id="Histogram_13" class="Histogram"></div>
+
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="comLine3">
+        <div class="main-info-page">
+            <h3 class="text-center">年报表 - 折线比较图</h3>
+            <div class="container-fluid">
+                <div class="row form-inline form-group">
+                    <div class="date-form-group col-sm-6 form-group">
+                        <!--时间选择-->
+                        <div class="input-group date form_date col-md-5 year_sel" data-date=""
+                             data-date-format="yyyy"
+                             data-link-field="dtp_input2" data-link-format="yyyy">
+                            <input class="form-control" size="16" type="text" value="" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <!--表选择-->
+                        <select class="selectpicker" name="bigTable" id="bigTable_14"></select>
+                    </div>
+                </div>
+
+                <div class="row form-inline form-group last-form-group">
+                    <div class="col-sm-3 form-group">
+                        <p class="queryP">查询状态：
+                            <span class="queryStatus" id="queryStatus_14"><b class="status-ready">请选择表和时间以查询</b></span>
+                        </p>
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <select class="selectpicker" name="showLabel" id="showLabel11">
+                            <option value="0">显示数值</option>
+                            <option value="1">不显示数值</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="查询" class="query btn btn-primary btn-block">查询</button>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="添加比较项" class="com-add btn btn-primary btn-block">添加比较项</button>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <!--查询按钮-->
+                        <button type="button" value="生成表格" class="com-draw btn btn-primary btn-block">生成表格</button>
+                    </div>
+                </div>
+                <div class="row row-com"></div>
+                <div id="Histogram_14" class="Histogram"></div>
 
             </div>
         </div>

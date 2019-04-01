@@ -110,7 +110,7 @@ function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                 if (dateisNull && valueisNull) {
                     document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b class='status-error'>数据库中无查询结果</b>";
                 } else {
-                    createHis(data, name, date, tableVal, unit, pageIndex, querytype, pieType, isShowLabel);
+                    createHis(data, name, date, tableVal, unit, pageIndex, querytype, pieType, isShowLabel, dataDate);
                     console.log("创建成功第" + curIndex + "张表");
                 }
             };

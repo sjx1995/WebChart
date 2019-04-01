@@ -12,6 +12,14 @@
 //  页面索引，数字
 function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
 
+    // 初始化图表显示区域
+    var self = document.getElementsByClassName('Histogram')[pageIndex];
+    var parent = self.parentElement;
+    parent.removeChild(self);
+    let hisDivEle = document.createElement('div');
+    hisDivEle.className = "Histogram";
+    parent.append(hisDivEle);
+
     let serverIP = getServerIP();
     console.log("通信ip：" + serverIP);
 
@@ -30,7 +38,6 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
             // 显示查询状态
             if (data.code === 'success') {
                 document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b class='status-success' '>子数据查询成功</b>";
-                document.getElementsByName('tableName')[pageIndex].disabled = false;
             } else {
                 document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b class='status-error'>查询出错，请联系管理员。</b><br>错误代码：" + data.code;
             }
@@ -41,6 +48,15 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                 nameArr.push(nameArrKey);
             }
             console.log("子数据表名：" + nameArr);
+
+            // 初始化比较项
+            let rowChild = document.getElementsByClassName('row-com')[pageIndex-9].children;
+            const rowChildLength = rowChild.length;
+            for (let i = 0; i < rowChildLength; i++) {
+                document.getElementsByClassName('row-com')[pageIndex-9].removeChild(rowChild[0]);
+            }
+            createComSel(nameArr, pageIndex);
+            createComSel(nameArr, pageIndex);
 
             // 创建子数据列表
             com_createHisLi(nameArr, pageIndex);
@@ -56,23 +72,26 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                 //     生成一个对象，传入绘制表格的函数
                 // }
 
-                let com_mainSel = document.getElementsByClassName('comMainSel');
+                let com_mainSel = document.getElementsByClassName('tab-pane fade active in')[0].getElementsByClassName('comMainSel');
 
                 let seriesVal = [];
+                var comNameArr = [];
+
                 for (let i = 0; i < com_mainSel.length; i++) {
                     console.log("当前是" + i + "个子元素");
 
-                    var com_curIndex = document.getElementsByClassName('comDayHis')[i].value;
+                    var com_curIndex = document.getElementsByClassName('tab-pane fade active in')[0].getElementsByClassName('comDayHis')[i].value;
 
                     // 当前子数据名
                     var com_name = nameArr[com_curIndex];
+                    comNameArr.push(com_name);
                     console.log("当前子数据名:" + com_name);
 
                     // 横坐标数据
                     // 时间，保存在数组中
                     var com_date = [];
                     for (let dateKey in data.data[com_name]) {
-                        !isNaN(dateKey) ? com_date.push(dateKey) :null;
+                        !isNaN(dateKey) ? com_date.push(dateKey) : null;
                     }
                     console.log("横坐标数据：" + com_date);
 
@@ -104,10 +123,19 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
 
                     console.log("=====================循环完毕=====================");
 
+                    // 检测是否需要显示数字
+                    let showLabelSel = document.getElementsByName('showLabel')[pageIndex - 3];
+                    if (showLabelSel) {
+                        var isShowLabel = ShowLabel(showLabelSel, pageIndex);
+                    }
+
+
+                    // 创建数值对象
                     let obj = {};
                     obj.name = com_name;
                     obj.type = "bar";
                     obj.data = com_tableVal;
+                    obj.label = {normal: {show: isShowLabel, position: 'top'}}
 
                     seriesVal.push(obj);
                 }
@@ -116,7 +144,15 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                 if (seriesVal.length === 0) {
                     document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b class='status-error'>数据库中无查询结果</b>";
                 } else {
-                    com_createHis(data, com_name, com_date, com_tableVal, com_unit, pageIndex, querytype, seriesVal);
+                    // 初始化图表显示区域
+                    var self = document.getElementsByClassName('Histogram')[pageIndex];
+                    var parent = self.parentElement;
+                    parent.removeChild(self);
+                    let hisDivEle = document.createElement('div');
+                    hisDivEle.className = "Histogram";
+                    parent.append(hisDivEle);
+
+                    com_createHis(data, comNameArr, com_date, com_tableVal, com_unit, pageIndex, querytype, seriesVal, dataDate);
                     console.log("创建成功第" + com_curIndex + "张比较表");
                 }
 
