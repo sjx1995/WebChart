@@ -143,7 +143,8 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                     obj.name = com_name;
                     obj.type = isComHis;
                     obj.data = com_tableVal;
-                    obj.label = {normal: {show: isShowLabel, position: 'top'}}
+                    obj.label = {normal: {show: isShowLabel, position: 'top'}};
+                    obj.smooth = true;
 
                     seriesVal.push(obj);
                 }
