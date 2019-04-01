@@ -89,8 +89,7 @@ div.input-group {
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #eee;
-    width: 80%;
-    margin-right: 1%;
+    width: 75%;
     vertical-align: middle;
 }
 
@@ -98,8 +97,9 @@ div.input-group {
     color: #333;
     background-color: #fff;
     border-color: #ccc;
-    width: 17%;
+    width: 21%;
     height: 34px;
     vertical-align: middle;
-    min-width: 54px;
+    min-width: 70px;
+    float: right;
 }

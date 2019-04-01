@@ -68,13 +68,23 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
             com_draw.onclick = drawComTable;
 
             function drawComTable() {
+                let com_mainSel = document.getElementsByClassName('tab-pane fade active in')[0].getElementsByClassName('comMainSel');
+
+                // 初始化数据选项
+                // 如果选项没有选择，则删除
+                for (let i = 0; i < com_mainSel.length; i++) {
+                    if (com_mainSel[i].selectedIndex === 0) {
+                        let self = com_mainSel[i];
+                        let parent = self.parentElement;
+                        parent.remove(parent);
+                        i--;
+                    }
+                }
 
                 // 遍历每一个子数据项 {
                 //     获取当前子数据项的值
                 //     生成一个对象，传入绘制表格的函数
                 // }
-
-                let com_mainSel = document.getElementsByClassName('tab-pane fade active in')[0].getElementsByClassName('comMainSel');
 
                 let seriesVal = [];
                 var comNameArr = [];
@@ -154,15 +164,14 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                     document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b class='status-error'>数据库中无查询结果</b>";
                 } else {
                     // 初始化图表显示区域
-                    var self = document.getElementsByClassName('Histogram')[pageIndex];
-                    var parent = self.parentElement;
+                    let self = document.getElementsByClassName('Histogram')[pageIndex];
+                    let parent = self.parentElement;
                     parent.removeChild(self);
                     let hisDivEle = document.createElement('div');
                     hisDivEle.className = "Histogram";
                     parent.append(hisDivEle);
 
                     com_createHis(data, comNameArr, com_date, com_tableVal, com_unit, pageIndex, querytype, seriesVal, dataDate);
-                    console.log("创建成功第" + com_curIndex + "张比较表");
                 }
 
             }
