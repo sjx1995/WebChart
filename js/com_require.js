@@ -50,10 +50,10 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
             console.log("子数据表名：" + nameArr);
 
             // 初始化比较项
-            let rowChild = document.getElementsByClassName('row-com')[pageIndex-9].children;
+            let rowChild = document.getElementsByClassName('row-com')[pageIndex - 9].children;
             const rowChildLength = rowChild.length;
             for (let i = 0; i < rowChildLength; i++) {
-                document.getElementsByClassName('row-com')[pageIndex-9].removeChild(rowChild[0]);
+                document.getElementsByClassName('row-com')[pageIndex - 9].removeChild(rowChild[0]);
             }
             createComSel(nameArr, pageIndex);
             createComSel(nameArr, pageIndex);
@@ -65,7 +65,9 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
 
             // 为生成图表注册点击事件
             let com_draw = document.getElementsByClassName('com-draw')[pageIndex - 9];
-            com_draw.onclick = function () {
+            com_draw.onclick = drawComTable;
+
+            function drawComTable() {
 
                 // 遍历每一个子数据项 {
                 //     获取当前子数据项的值
@@ -125,15 +127,21 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
 
                     // 检测是否需要显示数字
                     let showLabelSel = document.getElementsByName('showLabel')[pageIndex - 3];
+                    showLabelSel.onchange = drawComTable;
                     if (showLabelSel) {
                         var isShowLabel = ShowLabel(showLabelSel, pageIndex);
                     }
 
+                    // 判断图表类型
+                    let isComHis = 'bar';
+                    if (pageIndex >= 12 && pageIndex <= 14) {
+                        isComHis = 'line';
+                    }
 
                     // 创建数值对象
                     let obj = {};
                     obj.name = com_name;
-                    obj.type = "bar";
+                    obj.type = isComHis;
                     obj.data = com_tableVal;
                     obj.label = {normal: {show: isShowLabel, position: 'top'}}
 

@@ -82,9 +82,6 @@ function com_createHis(data, comNameArr, com_date, com_tableVal, com_unit, pageI
                 saveAsImage: {show: true}
             }
         },
-        legend: {
-            data: ['单位']
-        },
         xAxis: {
             name: xUnit,
             data: com_date,
