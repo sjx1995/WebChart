@@ -18,7 +18,7 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
     parent.removeChild(self);
     let hisDivEle = document.createElement('div');
     hisDivEle.className = "Histogram";
-    parent.append(hisDivEle);
+    parent.appendChild(hisDivEle);
 
     let serverIP = getServerIP();
     console.log("通信ip：" + serverIP);
@@ -76,7 +76,8 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                     if (com_mainSel[i].selectedIndex === 0) {
                         let self = com_mainSel[i];
                         let parent = self.parentElement;
-                        parent.remove(parent);
+                        let gParent = parent.parentElement;
+                        gParent.removeChild(parent);
                         i--;
                     }
                 }
@@ -169,7 +170,7 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                     parent.removeChild(self);
                     let hisDivEle = document.createElement('div');
                     hisDivEle.className = "Histogram";
-                    parent.append(hisDivEle);
+                    parent.appendChild(hisDivEle);
 
                     com_createHis(data, comNameArr, com_date, com_tableVal, com_unit, pageIndex, querytype, seriesVal, dataDate);
                 }

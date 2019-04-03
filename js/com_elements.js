@@ -34,13 +34,13 @@ function createComSel(nameArr, pageIndex) {
     let rowEle = document.getElementsByClassName('row-com')[pageIndex - 9];
     let divEle = document.createElement('div');
     divEle.className = "col-sm-6 form-group";
-    rowEle.append(divEle);
+    rowEle.appendChild(divEle);
 
     let selectEle = document.createElement('select');
     selectEle.className = "com-selectpicker comMainSel comDayHis";
     selectEle.setAttribute("name", "tableName");
     selectEle.innerHTML = "<option>==请选择要查看的子数据==</option>";
-    divEle.append(selectEle);
+    divEle.appendChild(selectEle);
     for (let j = 0; j < nameArr.length; j++) {
         var opts = document.createElement('option');
         opts.setAttribute("value", j);
@@ -51,7 +51,7 @@ function createComSel(nameArr, pageIndex) {
     let delBtnEle = document.createElement("button");
     delBtnEle.className = "btn btn-default com-del-btn";
     delBtnEle.innerText = "删除";
-    divEle.append(delBtnEle);
+    divEle.appendChild(delBtnEle);
 
     delBtnEle.onclick = delFatherEle;
 }
@@ -60,6 +60,7 @@ function createComSel(nameArr, pageIndex) {
 // 删除父节点元素
 function delFatherEle() {
     let parentEle = this.parentElement;
-    parentEle.remove(parentEle.children[0].parentElement)
+    let gParent = parentEle.parentElement;
+    gParent.removeChild(parentEle.children[0].parentElement)
 
 }
