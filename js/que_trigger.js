@@ -7,59 +7,32 @@
 * 2019.3.25 Sunly
 * */
 
-
-/*
-* 日报表
-* 'lvchi': '滤池报表一',
-* 'zks': '中控室报表一',
-* 'pac': 'PAC投加系统报表',
-* 'jccll': '进出厂流量报表一'
-* 'jccsz': '进出厂水质报表一'
-* 'kmn': 'KMnO4投加系统报表
-* 'hxt': '活性炭投加系统报表',
-* 'jl': '加氯系统报表'
-* */
-let daySelData = [
-    '==请选择查看日报表的类型==',
-    '中控室报表一'
-    // '滤池报表一',
-    // 'PAC投加系统报表',
-    // '进出厂流量报表一',
-    // '进出厂水质报表一',
-    // 'kMnO4投加系统报表',
-    // '活性炭投加系统报表',
-    // '加氯系统报表'
-];
-
-/*
-* 月报表
-* 'zks': '中控室报表二',
-* 'jccll': '进出厂流量报表二',
-* 'jccsz': '进出厂水质报表二'
-*/
-let monthSelData = [
-    '==请选择查看月报表的类型==',
-    '中控室报表二'
-    // '进出厂流量报表二',
-    // '进出厂水质报表二'
-];
-
-/*
-* 年报表
-* 'zks': '中控室报表三',
-* 'jccll': '进出厂流量报表三',
-* 'jccsz': '进出厂水质报表三'
-* */
-let yearSelData = [
-    '==请选择查看年报表的类型==',
-    '中控室报表三'
-    // '进出厂流量报表三',
-    // '进出厂水质报表三'
-];
+// 提取选择器名字
+function getSelName(selName) {
+    let nameArr = [];
+    let selObjName = '';
+    switch (selName) {
+        case 'day':
+            selObjName = daySelData;
+            break;
+        case 'month':
+            selObjName = monthSelData;
+            break;
+        case 'year':
+            selObjName = yearSelData;
+            break;
+        default:
+            alert("配置错误！");
+    }
+    for (let name in selObjName) {
+        nameArr.push(name);
+    }
+    return nameArr;
+}
 
 // 柱状图加载入口
 function queryDayHistogram() {
-    let dayHistogramSelData = daySelData;
+    let dayHistogramSelData = getSelName('day');
     // 设定元素在页面数组中的位置
     let pageIndex = 0;
     console.log("日报表，当前在第" + pageIndex + "个页面，大表数据：" + dayHistogramSelData);
@@ -68,7 +41,7 @@ function queryDayHistogram() {
 }
 
 function queryMonthHistogram() {
-    let monthHistogramSelData = monthSelData;
+    let monthHistogramSelData = getSelName('month');
     // 设定元素在页面数组中的位置
     let pageIndex = 1;
     console.log("月报表，当前在第" + pageIndex + "个页面，大表数据：" + monthHistogramSelData);
@@ -77,7 +50,7 @@ function queryMonthHistogram() {
 }
 
 function queryYearHistogram() {
-    let yearHistogramSelData = yearSelData;
+    let yearHistogramSelData = getSelName('year');
     // 设定元素在页面数组中的位置
     let pageIndex = 2;
     console.log("年报表，当前在第" + pageIndex + "个页面，大表数据：" + yearHistogramSelData);
@@ -87,7 +60,7 @@ function queryYearHistogram() {
 
 // 折线图加载入口
 function queryDayLine() {
-    let dayHistogramSelData = daySelData;
+    let dayHistogramSelData = getSelName('day');
     // 设定元素在页面数组中的位置
     let pageIndex = 3;
     console.log("日报表，当前在第" + pageIndex + "个页面，大表数据：" + dayHistogramSelData);
@@ -96,7 +69,7 @@ function queryDayLine() {
 }
 
 function queryMonthLine() {
-    let monthHistogramSelData = monthSelData;
+    let monthHistogramSelData = getSelName('month');
     // 设定元素在页面数组中的位置
     let pageIndex = 4;
     console.log("月报表，当前在第" + pageIndex + "个页面，大表数据：" + monthHistogramSelData);
@@ -105,7 +78,7 @@ function queryMonthLine() {
 }
 
 function queryYearLine() {
-    let yearHistogramSelData = yearSelData;
+    let yearHistogramSelData = getSelName('year');
     // 设定元素在页面数组中的位置
     let pageIndex = 5;
     console.log("年报表，当前在第" + pageIndex + "个页面，大表数据：" + yearHistogramSelData);
@@ -115,7 +88,7 @@ function queryYearLine() {
 
 // 饼状图入口
 function queryDayPie() {
-    let dayHistogramSelData = daySelData;
+    let dayHistogramSelData = getSelName('day');
     // 设定元素在页面数组中的位置
     let pageIndex = 6;
     console.log("日报表，当前在第" + pageIndex + "个页面，大表数据：" + dayHistogramSelData);
@@ -124,7 +97,7 @@ function queryDayPie() {
 }
 
 function queryMonthPie() {
-    let monthHistogramSelData = monthSelData;
+    let monthHistogramSelData = getSelName('month');
     // 设定元素在页面数组中的位置
     let pageIndex = 7;
     console.log("月报表，当前在第" + pageIndex + "个页面，大表数据：" + monthHistogramSelData);
@@ -133,7 +106,7 @@ function queryMonthPie() {
 }
 
 function queryYearPie() {
-    let yearHistogramSelData = yearSelData;
+    let yearHistogramSelData = getSelName('year');
     // 设定元素在页面数组中的位置
     let pageIndex = 8;
     console.log("年报表，当前在第" + pageIndex + "个页面，大表数据：" + yearHistogramSelData);
@@ -143,7 +116,7 @@ function queryYearPie() {
 
 // 比较柱状图
 function compareDayHistogram() {
-    let dayHistogramSelData = daySelData;
+    let dayHistogramSelData = getSelName('day');
     // 设定元素在页面数组中的位置
     let pageIndex = 9;
     console.log("日报表，当前在第" + pageIndex + "个页面，比较数据，大表数据：" + dayHistogramSelData);
@@ -152,7 +125,7 @@ function compareDayHistogram() {
 }
 
 function compareMonthHistogram() {
-    let monthHistogramSelData = monthSelData;
+    let monthHistogramSelData = getSelName('month');
     // 设定元素在页面数组中的位置
     let pageIndex = 10;
     console.log("月报表，当前在第" + pageIndex + "个页面，比较数据，大表数据：" + monthHistogramSelData);
@@ -161,7 +134,7 @@ function compareMonthHistogram() {
 }
 
 function compareYearHistogram() {
-    let yearHistogramSelData = yearSelData;
+    let yearHistogramSelData = getSelName('year');
     // 设定元素在页面数组中的位置
     let pageIndex = 11;
     console.log("年报表，当前在第" + pageIndex + "个页面，比较数据，大表数据：" + yearHistogramSelData);
@@ -171,7 +144,7 @@ function compareYearHistogram() {
 
 // 比较折现图
 function compareDayLine() {
-    let dayHistogramSelData = daySelData;
+    let dayHistogramSelData = getSelName('day');
     // 设定元素在页面数组中的位置
     let pageIndex = 12;
     console.log("日报表，当前在第" + pageIndex + "个页面，比较数据，大表数据：" + dayHistogramSelData);
@@ -180,7 +153,7 @@ function compareDayLine() {
 }
 
 function compareMonthLine() {
-    let monthHistogramSelData = monthSelData;
+    let monthHistogramSelData = getSelName('month');
     // 设定元素在页面数组中的位置
     let pageIndex = 13;
     console.log("月报表，当前在第" + pageIndex + "个页面，比较数据，大表数据：" + monthHistogramSelData);
@@ -189,7 +162,7 @@ function compareMonthLine() {
 }
 
 function compareYearLine() {
-    let yearHistogramSelData = yearSelData;
+    let yearHistogramSelData = getSelName('year');
     // 设定元素在页面数组中的位置
     let pageIndex = 14;
     console.log("年报表，当前在第" + pageIndex + "个页面，比较数据，大表数据：" + yearHistogramSelData);

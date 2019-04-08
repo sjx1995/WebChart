@@ -31,25 +31,11 @@ function createHistogramSel(histogramSelData, pageIndex, querytype) {
     console.log("子数据第一项为：" + histogramSel.options[0].innerText);
     // 判断大表类型，添加索引
     if (histogramSel.options[0].innerText.indexOf('日报表') >= 0) {
-        histogramSel.options[0].value = "";
-        histogramSel.options[1].value = "r/zks";
-        // histogramSel.options[2].value = "r/lvchi";
-        // histogramSel.options[3].value = "r/pac";
-        // histogramSel.options[4].value = "r/jccll";
-        // histogramSel.options[5].value = "r/jccsz";
-        // histogramSel.options[6].value = "r/kmn";
-        // histogramSel.options[7].value = "r/hxt";
-        // histogramSel.options[8].value = "r/jl";
+        let keyArr = addValtoOpt(daySelData, histogramSel);
     } else if (histogramSel.options[0].innerText.indexOf('月报表') >= 0) {
-        histogramSel.options[0].value = "";
-        histogramSel.options[1].value = "y/zks";
-        // histogramSel.options[2].value = "y/jccll";
-        // histogramSel.options[3].value = "y/jccsz";
+        let keyArr = addValtoOpt(monthSelData, histogramSel);
     } else if (histogramSel.options[0].innerText.indexOf('年报表') >= 0) {
-        histogramSel.options[0].value = "";
-        histogramSel.options[1].value = "n/zks";
-        // histogramSel.options[2].value = "n/jccll";
-        // histogramSel.options[3].value = "n/jccsz";
+        let keyArr = addValtoOpt(yearSelData, histogramSel);
     } else {
         document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b class='status-error'>读取报表类型出错</b>";
     }
@@ -140,4 +126,15 @@ function createHisLi(nameArr, pageIndex) {
     }
 
     return mainSel;
+}
+
+// 为查询注册value
+function addValtoOpt(keyObj, selEle) {
+    let keyArr = [];
+    for (let key in keyObj) {
+        keyArr.push(keyObj[key]);
+    }
+    for (let i = 0; i < keyArr.length; i++) {
+        selEle.options[i].value = keyArr[i];
+    }
 }

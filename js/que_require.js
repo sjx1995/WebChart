@@ -113,7 +113,7 @@ function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                     createHis(data, name, date, tableVal, unit, pageIndex, querytype, pieType, isShowLabel, dataDate);
                     console.log("创建成功第" + curIndex + "张表");
                 }
-            };
+            }
         },
         'error': function () {
             // 错误提示
