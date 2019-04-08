@@ -23,6 +23,7 @@ A chart website
 使用说明：
 - js/serverIP.js中使用服务器ip替换`serverIP`字段
 - js/serverIP.js中使用水厂名替换`waterPlantName`字段，以显示在数据表头
+- js/serverIP.js中可以**注释**掉不需要的选项，**不要删除多余选项**
 
 ---
 
