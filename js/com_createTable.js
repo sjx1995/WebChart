@@ -38,7 +38,7 @@ function com_createHis(data, comNameArr, com_date, com_tableVal, com_unit, pageI
     let unitY = minAndMax(seriesVal, com_unit);
     for (let i = 0; i < seriesVal.length; i++) {
         for (let j = 0; j < unitY.length; j++) {
-            if (j === 0) {
+            if (i === 0) {
                 unitY[j].min = (unitY[j].min * 0.85).toFixed(2);
                 unitY[j].max = (unitY[j].max * 1.15).toFixed(2);
             }

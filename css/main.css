@@ -112,3 +112,15 @@ div.input-group {
     min-width: 70px;
     float: right;
 }
+
+.p-btn {
+    position: absolute;
+    /*float: left;*/
+    right: 67px;
+    bottom: 0px;
+    z-index: 9;
+}
+
+.table-responsive{
+    position: relative;
+}
