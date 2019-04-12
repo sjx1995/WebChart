@@ -88,7 +88,8 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                 // }
 
                 let seriesVal = [];
-                var comNameArr = [];
+                let comNameArr = [];
+                let unitArr = [];
 
                 for (let i = 0; i < com_mainSel.length; i++) {
                     console.log("当前是" + i + "个子元素");
@@ -131,7 +132,8 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
 
                     // 单位
                     // 字符串，键值名unit
-                    var com_unit = data.data[com_name]["unit"];
+                    let com_unit = data.data[com_name]["unit"];
+                    unitArr.push(com_unit);
                     console.log("单位：" + com_unit);
 
                     console.log("=====================循环完毕=====================");
@@ -154,6 +156,7 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                     obj.name = com_name;
                     obj.type = isComHis;
                     obj.data = com_tableVal;
+                    obj.unit = com_unit;
                     obj.label = {normal: {show: isShowLabel, position: 'top'}};
                     obj.smooth = true;
 
@@ -172,7 +175,7 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
                     hisDivEle.className = "Histogram";
                     parent.appendChild(hisDivEle);
 
-                    com_createHis(data, comNameArr, com_date, com_tableVal, com_unit, pageIndex, querytype, seriesVal, dataDate);
+                    com_createHis(data, comNameArr, com_date, com_tableVal, unitArr, pageIndex, querytype, seriesVal, dataDate);
                 }
 
             }

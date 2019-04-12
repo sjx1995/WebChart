@@ -64,9 +64,16 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
             },
             toolbox: {
                 feature: {
-                    dataView: {show: true, readOnly: false},
+                    // dataView: {show: true, readOnly: false},
                     restore: {show: true},
-                    saveAsImage: {show: true}
+                    saveAsImage: {show: true},
+                    dataView: {
+                        show: true,
+                        readOnly: true,
+                        optionToContent: function (opt) {
+                            return createForm(opt);
+                        }
+                    },
                 }
             },
             legend: {
@@ -96,6 +103,7 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
             yAxis: {
                 name: unit,
                 min: function (data) {
+                    console.log(data);
                     return (data.min * 0.85).toFixed(4);
                 },
                 max: function (data) {
@@ -246,3 +254,5 @@ function ShowLabel(showLabelSel, pageIndex) {
     }
     return showLabel;
 }
+
+

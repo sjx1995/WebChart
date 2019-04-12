@@ -2,6 +2,15 @@ body {
     background-color: #010d28;
 }
 
+.navbar-brand {
+    background-image: url("../logo.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 150px;
+    background-size: contain;
+}
+
 .main-info-page {
     margin: 60px auto 0;
     max-width: 1200px;
@@ -81,7 +90,7 @@ div.input-group {
     margin: 0 auto;
 }
 
-.com-selectpicker{
+.com-selectpicker {
     height: 34px;
     padding: 6px 12px;
     font-size: 14px;
