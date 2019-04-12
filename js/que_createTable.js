@@ -197,7 +197,13 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
             },
             toolbox: {
                 feature: {
-                    dataView: {show: true, readOnly: false},
+                    dataView: {
+                        show: true,
+                        readOnly: true,
+                        optionToContent: function (opt) {
+                            return createForm(opt);
+                        }
+                    },
                     restore: {show: true},
                     saveAsImage: {show: true}
                 }

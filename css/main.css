@@ -3,7 +3,7 @@ body {
 }
 
 .navbar-brand {
-    background-image: url("../logo.png");
+    background-image: url("../img/logo.png");
     background-position: center center;
     background-repeat: no-repeat;
     display: inline-block;
