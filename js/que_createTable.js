@@ -41,7 +41,7 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
     if (querytype === 'bar' || querytype === 'line') {
         option = {
             title: {
-                text: getWaterPlantName() + " " + tableSubtext,
+                text: waterPlantSelVal + " " + tableSubtext,
                 subtext: dataDate + " " + name,
                 x: 'center',
                 textStyle: {
@@ -187,7 +187,7 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
 
         option = {
             title: {
-                text: getWaterPlantName() + " " + tableSubtext,
+                text: waterPlantSelVal + " " + tableSubtext,
                 subtext: dataDate + " " + name,
                 x: 'center'
             },

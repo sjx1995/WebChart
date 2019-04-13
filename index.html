@@ -79,7 +79,7 @@
                         <li><a href="#comLine3" data-toggle="tab" onclick="compareYearLine()">年报表</a></li>
                     </ul>
                 </li>
-                <!--<li><a href="#tabChart" data-toggle="tab">表格</a> </li>-->
+                <li class="active setting-li" onclick="showSetting()"><a href="#setting" data-toggle="tab">设置</a></li>
             </ul>
         </div>
         <!--<div class="collapse navbar-collapse" id="meun1">-->
@@ -725,7 +725,7 @@
     <div class="tab-pane fade" id="comLine2">
         <div class="main-info-page">
             <h3 class="text-center">月报表 - 折线比较图</h3>
-            <div class="container-fluid">
+            <div class=".container-fluid">
                 <div class="row form-inline form-group">
                     <div class="date-form-group col-sm-6 form-group">
                         <!--时间选择-->
@@ -739,18 +739,18 @@
                     </div>
                     <div class="col-sm-6 form-group">
                         <!--表选择-->
-                        <select class="selectpicker" name="bigTable" id="bigTable_13"></select>
+                        <select class="selectpicker" name="bigTable" id="bigTable_312312"></select>
                     </div>
                 </div>
 
                 <div class="row form-inline form-group last-form-group">
                     <div class="col-sm-3 form-group">
                         <p class="queryP">查询状态：
-                            <span class="queryStatus" id="queryStatus_13"><b class="status-ready">请选择表和时间以查询</b></span>
+                            <span class="queryStatus" id="queryStat3213"><b class="status-ready">请选择表和时间以查询</b></span>
                         </p>
                     </div>
                     <div class="col-sm-3 form-group">
-                        <select class="selectpicker" name="showLabel" id="showLabel10">
+                        <select class="selectpicker" name="showLabel" id="showL312312   l10">
                             <option value="0">显示数值</option>
                             <option value="1">不显示数值</option>
                         </select>
@@ -826,6 +826,63 @@
             </div>
         </div>
     </div>
+    <div class="tab-pane fade in active" id="setting">
+        <div class="main-info-page">
+            <h3 class="text-center">报表查询设置</h3>
+            <div class="container-fluid">
+
+                <div class="row form-inline form-group">
+                    <div class="col-sm-2 form-group label-parent">
+                        <label for="setting-ip"><span>设置ip:端口</span></label>
+                    </div>
+                    <div class="col-sm-8 form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon3">http://</span>
+                            <input type="text" class="form-control" id="setting-ip" aria-describedby="basic-addon3">
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group form-inline">
+                    <div class="col-sm-2 form-group label-parent">
+                        <label for="setting-waterPlant"><span>设置水厂</span></label>
+                    </div>
+                    <div class="col-sm-8 form-group">
+                        <select class="selectpicker" name="settingWaterPlant" id="setting-waterPlant"></select>
+                    </div>
+                </div>
+
+                <div class="row form-inline form-group last-form-group">
+                    <div class="col-sm-2 form-group label-parent">
+                        <label><span>配置日报表项</span></label>
+                    </div>
+                    <div class="col-sm-10 form-group" id="setting-day-query"></div>
+                </div>
+
+                <div class="row form-inline form-group last-form-group">
+                    <div class="col-sm-2 form-group label-parent">
+                        <label><span>配置月报表项</span></label>
+                    </div>
+                    <div class="col-sm-10 form-group" id="setting-month-query"></div>
+                </div>
+
+                <div class="row form-inline form-group last-form-group">
+                    <div class="col-sm-2 form-group label-parent">
+                        <label><span>配置年报表项</span></label>
+                    </div>
+                    <div class="col-sm-10 form-group" id="setting-year-query"></div>
+                </div>
+
+                <div class="row form-inline form-group last-form-group">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <button class="btn btn-block btn-primary" id="setting-btn" onclick="putSetting()">设置完成</button>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--<div class="tab-pane fade" id="tabChart">-->
     <!--<div style="margin: 80px 10% 0 10%;">-->
     <!--<h3 class="text-center">图标系统：表格</h3>-->
@@ -965,7 +1022,7 @@
 <script src="js/que_require.js"></script>
 <script src="js/que_createTable.js"></script>
 
-<script src="js/serverIP.js"></script>
+<script src="js/config.js"></script>
 <script src="js/echarts.theme.js"></script>
 
 <script src="js/com_elements.js"></script>
@@ -974,6 +1031,8 @@
 <script src="js/com_createTable.js"></script>
 
 <script src="js/createForm.js"></script>
+
+<script src="js/show_setting.js"></script>
 
 </body>
 </html>

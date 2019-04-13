@@ -11,10 +11,10 @@
 //  查询时间，字符串
 //  页面索引，数字
 function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
-    console.log(getServerIP());
-    let serverIP = getServerIP();
+    // console.log(getServerIP());
+    // let serverIP = getServerIP();
     $.ajax({
-        'url': 'http://' + serverIP + '/' + tableType + "/" + dataDate,
+        'url': 'http://' + serverIP +'/'+ getWaterPlantName()+ '/' + tableType + "/" + dataDate,
         'data': {},
         'success': function (data) {
 

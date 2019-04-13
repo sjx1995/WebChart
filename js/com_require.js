@@ -20,11 +20,11 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
     hisDivEle.className = "Histogram";
     parent.appendChild(hisDivEle);
 
-    let serverIP = getServerIP();
-    console.log("通信ip：" + serverIP);
+    // let serverIP = getServerIP();
+    // console.log("通信ip：" + serverIP);
 
     $.ajax({
-        'url': 'http://' + serverIP + '/' + tableType + "/" + dataDate,
+        'url': 'http://' + serverIP + '/' + getWaterPlantName() + '/' + tableType + "/" + dataDate,
         'data': {},
         'success': function (data) {
 

@@ -67,7 +67,7 @@ function com_createHis(data, comNameArr, com_date, com_tableVal, com_unit, pageI
 // 柱状图、折线图默认样式
     option = {
         title: {
-            text: getWaterPlantName() + " " + tableSubtext,
+            text: waterPlantSelVal + " " + tableSubtext,
             subtext: dataDate + " " + comNameArr,
             x: 'center',
             textStyle: {

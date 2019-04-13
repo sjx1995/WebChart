@@ -21,8 +21,20 @@ function getSelName(selName) {
         case 'year':
             selObjName = yearSelData;
             break;
+        case 'dayC':
+            selObjName = daySelDataConf;
+            break;
+        case 'monthC':
+            selObjName = monthSelDataConf;
+            break;
+        case 'yearC':
+            selObjName = yearSelDataConf;
+            break;
+        case 'waterPlant':
+            selObjName = waterPlantNameData;
+            break;
         default:
-            alert("配置错误！");
+            console.log("未配置或配置错误！");
     }
     for (let name in selObjName) {
         nameArr.push(name);

@@ -6,6 +6,32 @@
 * */
 
 
+// 开始
+window.onload = showSetting;
+
+function showSetting() {
+    document.getElementById('setting-ip').value='';
+
+    // 存储对象
+    daySelData = {
+        '==请选择查看日报表的类型==': ''
+    };
+
+    monthSelData = {
+        '==请选择查看月报表的类型==': ''
+    };
+
+    yearSelData = {
+        '==请选择查看年报表的类型==': ''
+    };
+
+    showWaterPlantSel();
+    showDayQuery();
+    showMonthQuery();
+    showYearQuery()
+};
+
+
 // 初始化时间控件
 function initTime(pageIndex) {
     if (pageIndex === 0 || pageIndex === 3 || pageIndex === 6 || pageIndex === 9 || pageIndex === 12) {
@@ -68,4 +94,13 @@ function initQueryStatus(pageIndex) {
         tableEle.innerHTML = "<option>请先选择表类型及时间</option>";
         tableEle.disabled = true;
     }
+}
+
+// 跳转第一页
+function goDayHis() {
+    document.getElementsByClassName('dropdown')[0].className='dropdown active';
+    document.getElementsByClassName('active setting-li')[0].className='setting-li';
+    document.getElementById('tabBar1').className='tab-pane fade in active';
+    document.getElementById('setting').className='tab-pane fade';
+    queryDayHistogram();
 }
