@@ -6,39 +6,82 @@
 * */
 
 
+// 入口
+function showSetting() {
+    document.getElementById('setting-ip').value = '';
+
+    // 存储对象
+    daySelData = {
+        '==请选择查看日报表的类型==': ''
+    };
+
+    monthSelData = {
+        '==请选择查看月报表的类型==': ''
+    };
+
+    yearSelData = {
+        '==请选择查看年报表的类型==': ''
+    };
+
+
+    if (document.cookie) {
+        readCookie();
+    } else {
+        showWaterPlantSel();
+        showDayQuery();
+        showMonthQuery();
+        showYearQuery();
+    }
+}
+
 // 提交用户选项
 function putSetting() {
     serverIP = document.getElementById('setting-ip').value;
 
     let WaterPlantSel = document.getElementById('setting-waterPlant');
-    waterPlantSelVal =WaterPlantSel[WaterPlantSel.selectedIndex].value;
+    waterPlantSelVal = WaterPlantSel[WaterPlantSel.selectedIndex].value;
 
     let daySel = document.getElementsByName('dayDataSel');
-    for (let i=0;i<daySel.length;i++){
-        if (daySel[i].checked){
+    let dayStatus = [];
+    for (let i = 0; i < daySel.length; i++) {
+        if (daySel[i].checked) {
             let key = daySel[i].nextElementSibling.childNodes[0].data;
             let value = daySelDataConf[key];
-            daySelData[key]=value;
+            daySelData[key] = value;
+            dayStatus.push(1);
+        } else {
+            dayStatus.push(0);
         }
     }
+    console.log(daySelData);
 
     let monthSel = document.getElementsByName('monthDataSel');
-    for (let i=0;i<monthSel.length;i++){
-        if (monthSel[i].checked){
+    let monthStatus = [];
+    for (let i = 0; i < monthSel.length; i++) {
+        if (monthSel[i].checked) {
             let key = monthSel[i].nextElementSibling.childNodes[0].data;
             let value = monthSelDataConf[key];
-            monthSelData[key]=value;
+            monthSelData[key] = value;
+            monthStatus.push(1);
+        } else {
+            monthStatus.push(0);
         }
     }
 
     let yearSel = document.getElementsByName('yearDataSel');
-    for (let i=0;i<yearSel.length;i++){
-        if (yearSel[i].checked){
+    let yearStatus = [];
+    for (let i = 0; i < yearSel.length; i++) {
+        if (yearSel[i].checked) {
             let key = yearSel[i].nextElementSibling.childNodes[0].data;
             let value = yearSelDataConf[key];
-            yearSelData[key]=value;
+            yearSelData[key] = value;
+            yearStatus.push(1);
+        } else {
+            yearStatus.push(0);
         }
     }
+    setCookie(dayStatus, monthStatus, yearStatus);
+    console.log(daySelData);
     goDayHis();
 }
 
@@ -89,3 +132,4 @@ function showQuerySel(selData, parentNode, nameVal) {
 function getWaterPlantName() {
     return waterPlantNameData[waterPlantSelVal];
 }
+

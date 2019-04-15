@@ -838,7 +838,7 @@
                     <div class="col-sm-8 form-group">
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon3">http://</span>
-                            <input type="text" class="form-control" id="setting-ip" aria-describedby="basic-addon3">
+                            <input type="text" class="form-control" id="setting-ip" aria-describedby="basic-addon3" placeholder="例如 192.168.0.1:80">
                         </div>
                     </div>
                 </div>
@@ -873,11 +873,14 @@
                 </div>
 
                 <div class="row form-inline form-group last-form-group">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4 form-group">
+                        <button class="btn btn-block btn-primary" id="clear-btn" onclick="clearCookie()">重置并清除缓存</button>
+                    </div>
+                    <div class="col-sm-4 form-group">
                         <button class="btn btn-block btn-primary" id="setting-btn" onclick="putSetting()">设置完成</button>
                     </div>
-                    <div class="col-sm-3"></div>
+                    <div class="col-sm-2"></div>
                 </div>
             </div>
         </div>
@@ -1022,7 +1025,7 @@
 <script src="js/que_require.js"></script>
 <script src="js/que_createTable.js"></script>
 
-<script src="js/config.js"></script>
+<script src="js/_config.js"></script>
 <script src="js/echarts.theme.js"></script>
 
 <script src="js/com_elements.js"></script>
@@ -1032,7 +1035,8 @@
 
 <script src="js/createForm.js"></script>
 
-<script src="js/show_setting.js"></script>
+<script src="js/setting_set.js"></script>
+<script src="js/setting_show.js"></script>
 
 </body>
 </html>

@@ -7,30 +7,9 @@
 
 
 // 开始
-window.onload = showSetting;
-
-function showSetting() {
-    document.getElementById('setting-ip').value='';
-
-    // 存储对象
-    daySelData = {
-        '==请选择查看日报表的类型==': ''
-    };
-
-    monthSelData = {
-        '==请选择查看月报表的类型==': ''
-    };
-
-    yearSelData = {
-        '==请选择查看年报表的类型==': ''
-    };
-
-    showWaterPlantSel();
-    showDayQuery();
-    showMonthQuery();
-    showYearQuery()
+window.onload = function () {
+    showSetting();
 };
-
 
 // 初始化时间控件
 function initTime(pageIndex) {

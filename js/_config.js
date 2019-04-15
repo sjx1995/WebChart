@@ -33,6 +33,6 @@ var yearSelDataConf = {
 };
 
 var waterPlantNameData = {
-    '==请选择水厂==': '',
+    '请选择水厂': '',
     '渭南北水厂': 'wnbsc'
 }

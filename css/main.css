@@ -151,10 +151,6 @@ label span {
     width: 100%;
 }
 
-button#setting-btn {
-    margin-top: 100px;
-}
-
 /*setting样式*/
 .radio,
 .checkbox {
