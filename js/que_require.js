@@ -11,12 +11,15 @@
 //  查询时间，字符串
 //  页面索引，数字
 function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
-    // console.log(getServerIP());
-    // let serverIP = getServerIP();
+    
+    showProgress();
+
     $.ajax({
         'url': 'http://' + serverIP +'/'+ getWaterPlantName()+ '/' + tableType + "/" + dataDate,
         'data': {},
         'success': function (data) {
+
+            finProgress(2000);
 
             // 把tableType格式化
             tableType = tableType.slice(2);
@@ -117,6 +120,7 @@ function ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
         },
         'error': function () {
             // 错误提示
+            finProgress(0);
             document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b class='status-error'>子数据读取失败</b>";
         },
         'type': 'get',
