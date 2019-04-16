@@ -8,6 +8,7 @@
 
 // 创建柱状图大表数据
 function createHistogramSel(histogramSelData, pageIndex, querytype) {
+    window.scroll(0,0);
     // 初始化查询状态
     document.getElementsByClassName('queryStatus')[pageIndex].innerHTML = "<b class='status-ready'>请选择表和时间以查询</b>";
     // 初始化时间控件

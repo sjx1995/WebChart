@@ -8,6 +8,7 @@
 
 // 开始
 window.onload = function () {
+    isFirstLog = true;
     showSetting();
 };
 

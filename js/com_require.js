@@ -11,7 +11,7 @@
 //  查询时间，字符串
 //  页面索引，数字
 function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
-    finProgress(2000);
+    showProgress(2000);
     // 初始化图表显示区域
     var self = document.getElementsByClassName('Histogram')[pageIndex];
     var parent = self.parentElement;
@@ -27,7 +27,7 @@ function com_ajaxHistogram(dataDate, tableType, pageIndex, querytype) {
         'url': 'http://' + serverIP + '/' + getWaterPlantName() + '/' + tableType + "/" + dataDate,
         'data': {},
         'success': function (data) {
-
+            finProgress(2000);
             // 把tableType格式化
             tableType = tableType.slice(2);
 

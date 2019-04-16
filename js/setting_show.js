@@ -8,21 +8,24 @@
 
 // 入口
 function showSetting() {
+    window.scroll(0,0);
     document.getElementById('setting-ip').value = '';
 
-    // 存储对象
-    daySelData = {
-        '==请选择查看日报表的类型==': ''
-    };
+    if (isFirstLog){
+        // 初始化存储对象
+        daySelData = {
+            '==请选择查看日报表的类型==': ''
+        };
 
-    monthSelData = {
-        '==请选择查看月报表的类型==': ''
-    };
+        monthSelData = {
+            '==请选择查看月报表的类型==': ''
+        };
 
-    yearSelData = {
-        '==请选择查看年报表的类型==': ''
-    };
-
+        yearSelData = {
+            '==请选择查看年报表的类型==': ''
+        };
+        isFirstLog=false;
+    }
 
     if (document.cookie) {
         readCookie();
