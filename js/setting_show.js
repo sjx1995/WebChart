@@ -9,7 +9,7 @@
 // 入口
 function showSetting() {
     window.scroll(0, 0);
-    if (document.getElementById('meun1').getAttribute('aria-expanded')){
+    if (document.getElementById('meun1').getAttribute('aria-expanded') && document.getElementById('meun1').style.height !== '1px') {
         document.getElementsByClassName('navbar-toggle')[0].click();
     }
 
@@ -60,7 +60,6 @@ function putSetting() {
             dayStatus.push(0);
         }
     }
-    console.log(daySelData);
 
     let monthSel = document.getElementsByName('monthDataSel');
     let monthStatus = [];
@@ -88,7 +87,6 @@ function putSetting() {
         }
     }
     setCookie(dayStatus, monthStatus, yearStatus);
-    console.log(daySelData);
     goDayHis();
 }
 

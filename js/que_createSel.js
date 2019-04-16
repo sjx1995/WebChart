@@ -9,7 +9,7 @@
 // 创建柱状图大表数据
 function createHistogramSel(histogramSelData, pageIndex, querytype) {
     window.scroll(0, 0);
-    if (document.getElementById('meun1').getAttribute('aria-expanded')){
+    if (document.getElementById('meun1').getAttribute('aria-expanded') && document.getElementById('meun1').style.height !== '1px') {
         document.getElementsByClassName('navbar-toggle')[0].click();
     }
     // 初始化查询状态
