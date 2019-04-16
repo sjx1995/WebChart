@@ -8,10 +8,14 @@
 
 // 入口
 function showSetting() {
-    window.scroll(0,0);
+    window.scroll(0, 0);
+    if (document.getElementById('meun1').getAttribute('aria-expanded')){
+        document.getElementsByClassName('navbar-toggle')[0].click();
+    }
+
     document.getElementById('setting-ip').value = '';
 
-    if (isFirstLog){
+    if (isFirstLog) {
         // 初始化存储对象
         daySelData = {
             '==请选择查看日报表的类型==': ''
@@ -24,7 +28,7 @@ function showSetting() {
         yearSelData = {
             '==请选择查看年报表的类型==': ''
         };
-        isFirstLog=false;
+        isFirstLog = false;
     }
 
     if (document.cookie) {

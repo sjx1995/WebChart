@@ -21,13 +21,13 @@ function move() {
     intervalIdTemp = setInterval(go, 100);
 
     function go() {
-        if (width >= 100){
+        if (width >= 100) {
             clearInterval(intervalIdTemp);
-        }else if (width<=70) {
+        } else if (width <= 90) {
             width++;
             progressBar.style.width = width + '%';
-        }else{
-            width += (100-width)/30;
+        } else {
+            width = 91;
             progressBar.style.width = width + '%';
         }
     }
@@ -46,10 +46,11 @@ function finProgress(val) {
     // progressBar.className='progress-bar progress-bar-waring'
 
     hideProgress();
+
     function hideProgress() {
         setTimeout(function () {
             progressContainer.style.display = 'none';
-            progressBar.style.width=0;
+            progressBar.style.width = 0;
         }, val);
     }
 
