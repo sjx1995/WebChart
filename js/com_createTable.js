@@ -18,21 +18,21 @@
 //  饼状图类型（字符串||null）
 //  柱状图、线形图是否显示数值（布尔）
 function com_createHis(data, comNameArr, com_date, com_tableVal, com_unit, pageIndex, querytype, seriesVal, dataDate) {
-    console.log("生成新表格中...");
-    console.log(data);
-    console.log("=============");
-    console.log(comNameArr);
-    console.log("=============");
-    console.log(com_date);
-    console.log("=============");
-    console.log(com_unit);
-    console.log("=============");
-    console.log(pageIndex);
-    console.log("=============");
-    console.log(querytype);
-    console.log("=============");
-    console.log(seriesVal);
-    console.log("=============");
+    // console.log("生成新表格中...");
+    // console.log(data);
+    // console.log("=============");
+    // console.log(comNameArr);
+    // console.log("=============");
+    // console.log(com_date);
+    // console.log("=============");
+    // console.log(com_unit);
+    // console.log("=============");
+    // console.log(pageIndex);
+    // console.log("=============");
+    // console.log(querytype);
+    // console.log("=============");
+    // console.log(seriesVal);
+    // console.log("=============");
 
 
     let unitY = minAndMax(seriesVal, com_unit);
@@ -98,7 +98,7 @@ function com_createHis(data, comNameArr, com_date, com_tableVal, com_unit, pageI
                     show: true,
                     readOnly: true,
                     optionToContent: function (opt) {
-                        return createForm(opt);
+                        return createForm(opt, dataDate, comNameArr, pageIndex);
                     }
                 },
                 restore: {show: true},

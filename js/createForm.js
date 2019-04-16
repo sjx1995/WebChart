@@ -6,20 +6,19 @@
 
 
 // 显示表格
-function createForm(opt) {
+function createForm(opt, dataDate, dataName, pageIndexNum) {
     console.info(opt);
     if (opt.xAxis) {
         let axisData = opt.xAxis[0].data;
         let series = opt.series;
-        console.log(axisData);
-        console.log(series);
         //表头
         let tdHeaders = '<td>时间/' + opt.xAxis[0].name + '</td>';
         series.forEach(function (item) {
             //组装表头
             tdHeaders += '<td>' + item.name + '/' + opt.yAxis[0].name + '</td>';
         });
-        let table = '<div class="table-responsive"><table id="dataTable" class="table ex-table table-bordered table-striped table-hover" style="text-align:center"><tbody><tr>' + tdHeaders + '</tr>';
+        let spanNum = series.length + 1;
+        let table = '<div class="table-responsive"><table id="dataTable' + pageIndexNum + '" class="table ex-table table-bordered table-striped table-hover" style="text-align:center"><tbody><tr><td colspan="' + spanNum + '">' + waterPlantSelVal + '</td></tr><tr><td colspan="' + spanNum + '">' + dataName + '</td></tr><tr><td colspan="' + spanNum + '">' + dataDate + '</td></tr></tr><tr>' + tdHeaders + '</tr>';
         //数据
         let tdBodys = '';
         for (let i = 0, l = axisData.length; i < l; i++) {
@@ -31,7 +30,7 @@ function createForm(opt) {
             tdBodys = '';
         }
 
-        table += '</tbody></table></div><button onclick="method5(\'dataTable\')" class="btn btn-primary btn-xs p-btn">导出为Excel</button>';
+        table += '</tbody></table></div><button onclick="method5(\'dataTable\',' + pageIndexNum + ')" class="btn btn-primary btn-xs p-btn">导出为Excel</button>';
         return table;
     } else {
         let axisDataTemp = opt.series[0].data;
@@ -42,8 +41,6 @@ function createForm(opt) {
             seriesArr.push(axisDataTemp[i].value);
         }
         let series = [{data: seriesArr}];
-        console.log(axisData);
-        console.log(series);
         //表头
         let tdHeaders = '<td>时间</td>';
         tdHeaders += '<td>' + opt.series[0].name + '</td>';
@@ -52,7 +49,7 @@ function createForm(opt) {
         //     console.log(item);
         //     tdHeaders += '<td>' + item.name+'</td>';
         // });
-        let table = '<div class="table-responsive"><table id="dataTable" class="table ex-table table-bordered table-striped table-hover" style="text-align:center"><tbody><tr>' + tdHeaders + '</tr>';
+        let table = '<div class="table-responsive"><table id="dataTable' + pageIndexNum + '" class="table ex-table table-bordered table-striped table-hover" style="text-align:center"><tbody><tr><td colspan="2">' + waterPlantSelVal + '</td></tr><tr><td colspan="2">' + dataName + '</td></tr><tr><td colspan="2">' + dataDate + '</td></tr><tr>' + tdHeaders + '</tr>';
         //数据
         let tdBodys = '';
         for (let i = 0, l = axisData.length; i < l; i++) {
@@ -64,7 +61,7 @@ function createForm(opt) {
             tdBodys = '';
         }
 
-        table += '</tbody></table></div><button onclick="method5(\'dataTable\')" class="btn btn-primary btn-xs p-btn">导出为Excel</button>';
+        table += '</tbody></table></div><button onclick="method5(\'dataTable\',' + pageIndexNum + ')" class="btn btn-primary btn-xs p-btn">导出为Excel</button>';
         return table;
     }
 
@@ -97,9 +94,10 @@ function getExplorer() {
     }
 }
 
-function method5(tableid) {
+function method5(tableid, pageIndex) {
     if (getExplorer() == 'ie') {
-        var curTbl = document.getElementsByClassName('active')[0].getElementById(tableid);
+        tableid = tableid + pageIndex;
+        var curTbl = document.getElementById(tableid);
         var oXL = new ActiveXObject("Excel.Application");
         var oWB = oXL.Workbooks.Add();
         var xlsheet = oWB.Worksheets(1);
@@ -124,7 +122,7 @@ function method5(tableid) {
         }
 
     } else {
-        tableToExcel(tableid)
+        tableToExcel(tableid, pageIndex)
     }
 }
 
@@ -136,22 +134,28 @@ function Cleanup() {
 var tableToExcel = (function () {
     var uri = 'data:application/vnd.ms-excel;base64,',
         template = '<html><head><meta charset="UTF-8"></head><body><table  border="1">{table}</table></body></html>',
-        base64 = function (
-            s) {
+        base64 = function (s) {
             return window.btoa(unescape(encodeURIComponent(s)))
         },
         format = function (s, c) {
             return s.replace(/{(\w+)}/g, function (m, p) {
                 return c[p];
             })
+        };
+    return function (table, pageIndex, name) {
+        console.log(table);
+        console.log(pageIndex);
+        if (!table.nodeType) {
+            table = table + pageIndex;
+            console.log(table);
+            table = document.getElementById(table);
         }
-    return function (table, name) {
-        if (!table.nodeType)
-            table = document.getElementById(table)
+        console.log(table);
+        console.log(document.getElementById(table));
         var ctx = {
             worksheet: name || 'Worksheet',
             table: table.innerHTML
-        }
+        };
         window.location.href = uri + base64(format(template, ctx))
     }
 })()

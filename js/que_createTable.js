@@ -71,7 +71,7 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
                         show: true,
                         readOnly: true,
                         optionToContent: function (opt) {
-                            return createForm(opt);
+                            return createForm(opt, dataDate, name, pageIndex);
                         }
                     },
                 }
@@ -201,7 +201,7 @@ function createHis(data, name, date, tableValue, unit, pageIndex, querytype, pie
                         show: true,
                         readOnly: true,
                         optionToContent: function (opt) {
-                            return createForm(opt);
+                            return createForm(opt, dataDate, name, pageIndex);
                         }
                     },
                     restore: {show: true},
