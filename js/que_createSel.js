@@ -51,9 +51,9 @@ function createHistogramSel(histogramSelData, pageIndex, querytype) {
     let queryButton = document.getElementsByClassName('query')[pageIndex];
     queryButton.onclick = function () {
         let dataDate = document.getElementsByClassName('form_date')[pageIndex].getElementsByClassName('form-control')[0].value;
-        if (dataDate.indexOf("一月") >= 0) {
+        if (dataDate.indexOf("一月") >= 0 && dataDate.indexOf("十一月" < 0)) {
             dataDate = dataDate.replace(" 一月", "-01");
-        } else if (dataDate.indexOf("二月") >= 0) {
+        } else if (dataDate.indexOf("二月") >= 0 && dataDate.indexOf("十二月") < 0) {
             dataDate = dataDate.replace(" 二月", "-02");
         } else if (dataDate.indexOf("三月") >= 0) {
             dataDate = dataDate.replace(" 三月", "-03");
